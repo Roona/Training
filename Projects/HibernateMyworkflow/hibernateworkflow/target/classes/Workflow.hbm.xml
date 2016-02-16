@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.roona.hibernateworkflow.Users" table="m01_user">
+		<meta attribute="class-description">
+			This class contains the user detail.
+		</meta>
+		<id name="userid" type="int" column="userid">
+			<generator class="native" />
+		</id>
+		
+		<property name="username" column="username" type="string" />
+		<property name="phoneno" column="phoneno" type="int" />
+		<property name="applicationowner" column="applicationowner" type="string" />
+		<property name="aocontactno" column="aocontactno" type="int" />
+		
+	</class>
+</hibernate-mapping>
+ 

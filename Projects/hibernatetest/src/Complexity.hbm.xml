@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2016 11:19:41 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.roona.Complexity" table="complexity" catalog="myworkflowapp" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="complexity" type="string">
+            <column name="complexity" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

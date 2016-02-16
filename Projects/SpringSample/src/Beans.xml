@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+   <bean id="helloWorld3" class="com.roona.HelloWorld3">
+       <property name="message" value="Hello World3!"/>
+       
+   </bean>
+   
+   <bean id="helloWorld" class="com.roona.HelloWorld" />
+   <bean id="helloWorld2" class="com.roona.HelloWorld2" />
+   <bean id="HelloWorldTest" class="com.roona.HelloWorldTest" >
+   <property name="helloWorldMain">
+   <ref bean="helloWorld"/>
+   </property>
+   </bean>
+   <bean id="employer" class="com.roona.Employer" autowire="byName" scope="prototype">
+   <property name="employerName" value="abc"></property>
+  
+   </bean>
+   <bean id="employerAdd" class="com.roona.EmployerAdd"></bean>
+   
+  <!--  <bean id="OutputHelper" class="com.roona.OutputHelper">
+		<property name="outputGenerator">
+			<ref bean="CsvOutputGenerator" />
+		</property>
+	</bean>
+	
+<bean id="CsvOutputGenerator" class="com.roona.CsvOutputGenerator" />
+<bean id="JsonOutputGenerator" class="com.roona.JsonOutputGenerator" />
+ -->
+</beans>

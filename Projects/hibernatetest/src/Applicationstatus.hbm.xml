@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 25, 2016 11:19:41 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.roona.Applicationstatus" table="applicationstatus" catalog="myworkflowapp" optimistic-lock="version">
+        <id name="applicationid" type="int">
+            <column name="applicationid" />
+            <generator class="foreign">
+                <param name="property">application</param>
+            </generator>
+        </id>
+        <one-to-one name="application" class="com.roona.Application" constrained="true"></one-to-one>
+        <property name="assignedto" type="string">
+            <column name="assignedto" length="45" />
+        </property>
+        <property name="assigneddate" type="string">
+            <column name="assigneddate" length="45" />
+        </property>
+        <property name="dstartdate" type="string">
+            <column name="dstartdate" length="45" />
+        </property>
+        <property name="denddate" type="string">
+            <column name="denddate" length="45" />
+        </property>
+        <property name="qstartdate" type="string">
+            <column name="qstartdate" length="45" />
+        </property>
+        <property name="qenddate" type="string">
+            <column name="qenddate" length="45" />
+        </property>
+        <property name="pistartdate" type="string">
+            <column name="pistartdate" length="45" />
+        </property>
+        <property name="pienddate" type="string">
+            <column name="pienddate" length="45" />
+        </property>
+        <property name="pdate" type="string">
+            <column name="pdate" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
