@@ -18,10 +18,9 @@ public class TestHibernate {
 		
 		factory = configuration.buildSessionFactory(serviceRegistry);
 		TestHibernate testApplication = new TestHibernate();
-		testApplication.persist(3, "JavaCodeGeeks", "q","s");
+		//testApplication.persist(3, "JavaCodeGeeks", "q","s");
 		
 		}
 		
 	}
 
-}
