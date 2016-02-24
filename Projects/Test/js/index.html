@@ -1,0 +1,63 @@
+<head>
+
+<script>
+
+var myObj = function(){
+	this.name="vijay";
+}
+
+
+var obj = {};
+
+obj.name ="roona";
+obj.sub ="js";
+obj.topics =["js","java","spring"];
+
+
+
+function testit(){
+
+	var ele = document.getElementById("div1");
+	alert(ele.innerHTML);
+	
+	//var 
+	
+}
+
+
+var fn1 = function(){
+	var ele = document.getElementById("div1");
+	alert(obj.name+" : "+ ele.innerHTML);
+	
+	var vjobj = new myObj();
+	alert(vjobj.name);
+	
+	
+	
+};
+
+obj.myfn = fn1;
+
+//testit();
+document.addEventListener('DOMContentLoaded', obj.myfn, false);
+
+/* 
+document.addEventListener('DOMContentLoaded', function(){
+	var ele = document.getElementById("div1");
+	alert(ele.innerHTML);
+}, false); */
+</script>
+
+<body>
+
+<div id="div1">
+test msg dsfdsfdsfdsfdsf
+</div>
+
+</body>
+
+<script>
+
+</script>
+
+</head>
