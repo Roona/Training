@@ -11,9 +11,10 @@ import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.roona.bo.Application;
-import com.roona.util.HibernateAnnotationUtil;
 
 /**
  * Home object for domain model class Application.
@@ -21,19 +22,21 @@ import com.roona.util.HibernateAnnotationUtil;
  * @see com.roona.dao.Application
  * @author Hibernate Tools
  */
+@Repository
 public class ApplicationHome {
 
 	private static final Log log = LogFactory.getLog(ApplicationHome.class);
 
+	@Autowired
 	private SessionFactory sessionFactory = null;
 	
-	public SessionFactory getSessionFactory() {
+	/*public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}
+	}*/
 
 	public void persist(Application transientInstance) {
 		log.debug("persisting Application instance");
@@ -116,7 +119,7 @@ public class ApplicationHome {
 
 	public List<Application> findByExample(Application instance) {
 		log.debug("finding Application instance by example");
-		try {
+		/*try {
 			List<Application> results = (List<Application>) sessionFactory.getCurrentSession()
 					.createCriteria("com.roona.dao.Application").add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
@@ -124,6 +127,25 @@ public class ApplicationHome {
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
+		}*/
+		Transaction transaction = null;
+		List<Application> results = null;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			transaction = session.beginTransaction();
+			 results = (List<Application>) session
+					.createCriteria("com.roona.bo.Application").add(create(instance)).list();
+			log.debug("find by example successful, result size: " + results.size());
+			
+			transaction.commit();
+			log.debug("persist successful");
+		} catch (RuntimeException re) {
+
+			transaction.rollback();
+			log.error("persist failed", re);
+			throw re;
+			
 		}
+		return results;
 	}
 }
