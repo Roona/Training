@@ -1,19 +1,13 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
-
-import static org.hibernate.criterion.Example.create;
+// Generated Feb 27, 2016 12:23:23 AM by Hibernate Tools 4.3.1.Final
 
 import java.util.List;
-
+import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import com.roona.bo.Application;
-import com.roona.util.HibernateAnnotationUtil;
+import static org.hibernate.criterion.Example.create;
 
 /**
  * Home object for domain model class Application.
@@ -24,22 +18,23 @@ public class ApplicationHome {
 
 	private static final Log log = LogFactory.getLog(ApplicationHome.class);
 
-	private final SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+	private final SessionFactory sessionFactory = getSessionFactory();
 
-	
+	protected SessionFactory getSessionFactory() {
+		try {
+			return (SessionFactory) new InitialContext().lookup("SessionFactory");
+		} catch (Exception e) {
+			log.error("Could not locate SessionFactory in JNDI", e);
+			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+		}
+	}
 
 	public void persist(Application transientInstance) {
 		log.debug("persisting Application instance");
-		Transaction  transaction = null;
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			 transaction = session.beginTransaction();
-			session.persist(transientInstance);
-			transaction.commit();
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
-			
-			transaction.rollback();
 			log.error("persist failed", re);
 			throw re;
 		}

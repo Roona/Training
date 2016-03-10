@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="annotationsample/src/main/java"/>
+	<classpathentry kind="src" path="annotationsample/src/test/java"/>
+	<classpathentry kind="src" path="HibernateBasic/src"/>
+	<classpathentry kind="src" path="hibernatemywebapp/src"/>
+	<classpathentry kind="src" path="HibernateMyworkflow/hibernateworkflow/reverseengfiles"/>
+	<classpathentry kind="src" path="HibernateMyworkflow/hibernateworkflow/src/main/java"/>
+	<classpathentry kind="src" path="HibernateMyworkflow/hibernateworkflow/src/test/java"/>
+	<classpathentry kind="src" path="hibernatesample/src/main/java"/>
+	<classpathentry kind="src" path="hibernatesample/src/test/java"/>
+	<classpathentry kind="src" path="hibernatetest/src"/>
+	<classpathentry kind="src" path="springmvcsample/src"/>
+	<classpathentry kind="src" path="SpringSample/src"/>
+	<classpathentry kind="src" path="Test/src"/>
+	<classpathentry kind="lib" path="HibernateBasic/lib/hibernate-core-4.3.11.Final.jar"/>
+	<classpathentry kind="lib" path="HibernateBasic/lib/mysql-connector-java-5.1.38.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="HibernateBasic/bin"/>
+</classpath>

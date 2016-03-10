@@ -1,6 +1,5 @@
 <%@include file="header.jsp" %>
-
-<div>
+<div class="container">
 hi user
 </div>
 <%@include file="footer.jsp" %>

@@ -1,7 +1,7 @@
 
 
 
-<% String  contextPath = "http://localhost:8080/springmvcsample/";%>
+<% String  contextPath = request.getContextPath()+"/";%>
 
 
 <!-- The jQuery library is a prerequisite for all jqSuite products -->

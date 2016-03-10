@@ -1,18 +1,13 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
-
-import static org.hibernate.criterion.Example.create;
+// Generated Feb 27, 2016 12:23:23 AM by Hibernate Tools 4.3.1.Final
 
 import java.util.List;
-
 import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
-
-import com.roona.bo.ApplicationRequestDetails;
+import static org.hibernate.criterion.Example.create;
 
 /**
  * Home object for domain model class ApplicationRequestDetails.

@@ -1,38 +1,32 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
+// Generated Feb 27, 2016 12:24:19 AM by Hibernate Tools 4.3.1.Final
 
 import static org.hibernate.criterion.Example.create;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.roona.bo.Address;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class Address.
  * @see com.roona.dao.Address
  * @author Hibernate Tools
  */
+@Repository
 public class AddressHome {
 
 	private static final Log log = LogFactory.getLog(AddressHome.class);
+@Autowired
+	private  SessionFactory sessionFactory ;
 
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
+	
 
 	public void persist(Address transientInstance) {
 		log.debug("persisting Address instance");
@@ -108,12 +102,18 @@ public class AddressHome {
 
 	public List<Address> findByExample(Address instance) {
 		log.debug("finding Address instance by example");
+		Transaction transaction=null;
 		try {
-			List<Address> results = (List<Address>) sessionFactory.getCurrentSession()
+
+			Session session= sessionFactory.getCurrentSession();
+			transaction=session.beginTransaction();
+			List<Address> results = (List<Address>) session
 					.createCriteria("com.roona.dao.Address").add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
+			transaction.commit();
 			return results;
 		} catch (RuntimeException re) {
+			transaction.rollback();
 			log.error("find by example failed", re);
 			throw re;
 		}

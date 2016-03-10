@@ -1,5 +1,5 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
+// Generated Feb 27, 2016 12:24:19 AM by Hibernate Tools 4.3.1.Final
 
 import static org.hibernate.criterion.Example.create;
 
@@ -11,32 +11,26 @@ import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import com.roona.bo.Complexity;
-import com.roona.util.HibernateAnnotationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class Complexity.
  * @see com.roona.dao.Complexity
  * @author Hibernate Tools
  */
+@Repository
 public class ComplexityHome {
-	private static final Log log = LogFactory.getLog(ApplicationHome.class);
 
-	private final SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+	private static final Log log = LogFactory.getLog(ComplexityHome.class);
+@Autowired
+	private  SessionFactory sessionFactory ;
 
-
-	
-	
 
 	public void persist(Complexity transientInstance) {
 		log.debug("persisting Complexity instance");
-		Transaction  transaction = null;
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			 transaction = session.beginTransaction();
-			session.persist(transientInstance);
-			transaction.commit();
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -107,12 +101,17 @@ public class ComplexityHome {
 
 	public List<Complexity> findByExample(Complexity instance) {
 		log.debug("finding Complexity instance by example");
+		Transaction transaction=null;
 		try {
-			List<Complexity> results = (List<Complexity>) sessionFactory.getCurrentSession()
-					.createCriteria("com.roona.dao.Complexity").add(create(instance)).list();
+
+			Session session= sessionFactory.getCurrentSession();
+			transaction=session.beginTransaction();
+			List<Complexity> results = (List<Complexity>) session.createCriteria("com.roona.dao.Complexity").add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
+			transaction.commit();
 			return results;
 		} catch (RuntimeException re) {
+			transaction.rollback();
 			log.error("find by example failed", re);
 			throw re;
 		}

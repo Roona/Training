@@ -1,38 +1,32 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
+// Generated Feb 27, 2016 12:24:19 AM by Hibernate Tools 4.3.1.Final
 
 import static org.hibernate.criterion.Example.create;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import com.roona.bo.ApplicationRequest;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class ApplicationRequest.
  * @see com.roona.dao.ApplicationRequest
  * @author Hibernate Tools
  */
+@Repository
 public class ApplicationRequestHome {
 
 	private static final Log log = LogFactory.getLog(ApplicationRequestHome.class);
+@Autowired
+	private  SessionFactory sessionFactory ;
 
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
+	
 
 	public void persist(ApplicationRequest transientInstance) {
 		log.debug("persisting ApplicationRequest instance");
@@ -109,12 +103,18 @@ public class ApplicationRequestHome {
 
 	public List<ApplicationRequest> findByExample(ApplicationRequest instance) {
 		log.debug("finding ApplicationRequest instance by example");
+		Transaction transaction=null;
 		try {
-			List<ApplicationRequest> results = (List<ApplicationRequest>) sessionFactory.getCurrentSession()
+
+			Session session= sessionFactory.getCurrentSession();
+			transaction=session.beginTransaction();
+			List<ApplicationRequest> results = (List<ApplicationRequest>) session
 					.createCriteria("com.roona.dao.ApplicationRequest").add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
+			transaction.commit();
 			return results;
 		} catch (RuntimeException re) {
+			transaction.rollback();
 			log.error("find by example failed", re);
 			throw re;
 		}

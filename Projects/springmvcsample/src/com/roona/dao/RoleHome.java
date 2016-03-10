@@ -1,43 +1,40 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
+// Generated Feb 27, 2016 12:24:19 AM by Hibernate Tools 4.3.1.Final
 
 import static org.hibernate.criterion.Example.create;
 
 import java.util.List;
+
+import org.hibernate.Transaction;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import com.roona.bo.Role;
-import com.roona.util.HibernateAnnotationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class Role.
  * @see com.roona.dao.Role
  * @author Hibernate Tools
  */
+@Repository
 public class RoleHome {
 
 	private static final Log log = LogFactory.getLog(RoleHome.class);
-	private final SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
+@Autowired
+	private  SessionFactory sessionFactory;
 
+	
 
 	public void persist(Role transientInstance) {
 		log.debug("persisting Role instance");
-		Transaction  transaction = null;
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			 transaction = session.beginTransaction();
-			session.persist(transientInstance);
-			transaction.commit();
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
-			
-			transaction.rollback();
 			log.error("persist failed", re);
 			throw re;
 		}
@@ -106,12 +103,18 @@ public class RoleHome {
 
 	public List<Role> findByExample(Role instance) {
 		log.debug("finding Role instance by example");
+		Transaction transaction=null;
 		try {
-			List<Role> results = (List<Role>) sessionFactory.getCurrentSession().createCriteria("com.roona.dao.Role")
+
+			Session session= sessionFactory.getCurrentSession();
+			transaction = session.beginTransaction();
+			List<Role> results = (List<Role>) session.createCriteria("com.roona.dao.Role")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
+			transaction.commit();
 			return results;
 		} catch (RuntimeException re) {
+			transaction.rollback();
 			log.error("find by example failed", re);
 			throw re;
 		}

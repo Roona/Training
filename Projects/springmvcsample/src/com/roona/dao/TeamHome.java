@@ -1,5 +1,5 @@
 package com.roona.dao;
-// Generated Jan 27, 2016 11:26:46 PM by Hibernate Tools 4.3.1.Final
+// Generated Feb 27, 2016 12:24:19 AM by Hibernate Tools 4.3.1.Final
 
 import static org.hibernate.criterion.Example.create;
 
@@ -11,30 +11,26 @@ import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import com.roona.bo.Team;
-import com.roona.util.HibernateAnnotationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Home object for domain model class Team.
  * @see com.roona.dao.Team
  * @author Hibernate Tools
  */
+@Repository
 public class TeamHome {
 
-	private static final Log log = LogFactory.getLog(ApplicationHome.class);
+	private static final Log log = LogFactory.getLog(TeamHome.class);
+@Autowired
+	private  SessionFactory sessionFactory ;
 
-	private final SessionFactory sessionFactory = HibernateAnnotationUtil.getSessionFactory();
-
-
+	
 	public void persist(Team transientInstance) {
-		log.debug("persisting Application instance");
-		Transaction  transaction = null;
+		log.debug("persisting Team instance");
 		try {
-			Session session = sessionFactory.getCurrentSession();
-			 transaction = session.beginTransaction();
-			session.persist(transientInstance);
-			transaction.commit();
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -105,12 +101,18 @@ public class TeamHome {
 
 	public List<Team> findByExample(Team instance) {
 		log.debug("finding Team instance by example");
+		Transaction transaction=null;
 		try {
-			List<Team> results = (List<Team>) sessionFactory.getCurrentSession().createCriteria("com.roona.dao.Team")
+
+			Session session= sessionFactory.getCurrentSession();
+			transaction=session.beginTransaction();
+			List<Team> results = (List<Team>) session.createCriteria("com.roona.dao.Team")
 					.add(create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
+			transaction.commit();
 			return results;
 		} catch (RuntimeException re) {
+			transaction.rollback();
 			log.error("find by example failed", re);
 			throw re;
 		}

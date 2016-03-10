@@ -11,14 +11,14 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
          <property name="hibernate.show_sql">true</property>
          <property name="hibernate.current_session_context_class">thread</property>
-        <mapping class="com.roona.bo.Address"/>
-         <mapping class="com.roona.bo.Application"/>
-         <mapping class="com.roona.bo.ApplicationRequest"/>
-          <mapping class="com.roona.bo.ApplicationRequestDetails"/>
-         <mapping class="com.roona.bo.Complexity"/>
-         <mapping class="com.roona.bo.Role"/>
-          <mapping class="com.roona.bo.Team"/>
-         <mapping class="com.roona.bo.User"/>
+        <mapping class="com.roona.dao.Address"/>
+         <mapping class="com.roona.dao.Application"/>
+         <mapping class="com.roona.dao.ApplicationRequest"/>
+          <mapping class="com.roona.dao.ApplicationRequestDetails"/>
+         <mapping class="com.roona.dao.Complexity"/>
+         <mapping class="com.roona.dao.Role"/>
+          <mapping class="com.roona.dao.Team"/>
+         <mapping class="com.roona.dao.User"/>
          
         
     </session-factory>
