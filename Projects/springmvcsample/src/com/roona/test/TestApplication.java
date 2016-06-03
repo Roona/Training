@@ -2,10 +2,17 @@ package com.roona.test;
 
 import org.testng.annotations.Test;
 
+<<<<<<< HEAD
 import com.roona.dao.Application;
 import com.roona.dao.Complexity;
 import com.roona.dao.Role;
 import com.roona.dao.Team;
+=======
+import com.roona.bo.Application;
+import com.roona.bo.Complexity;
+import com.roona.bo.Role;
+import com.roona.bo.Team;
+>>>>>>> a2578f52a57d25dace98ff4e95ffd3cc4562a129
 import com.roona.dao.ApplicationHome;
 import com.roona.dao.ComplexityHome;
 import com.roona.dao.RoleHome;

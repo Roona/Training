@@ -5,8 +5,13 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+<<<<<<< HEAD
 import com.roona.dao.Application;
 import com.roona.dao.Role;
+=======
+import com.roona.bo.Application;
+import com.roona.bo.Role;
+>>>>>>> a2578f52a57d25dace98ff4e95ffd3cc4562a129
 
 public class HibernateUtil {
 	private static final Log log = LogFactory.getLog(HibernateUtil.class);
