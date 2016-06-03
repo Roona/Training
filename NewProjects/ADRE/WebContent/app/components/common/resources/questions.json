@@ -1,0 +1,57 @@
+{"questions": [
+    {
+        "key": 0,
+        "value": false, 
+        "question": "I need to enhance software and am adding new transactions or adding an increased transaction load to affected systems."                
+    },
+    {
+        "key": 1,
+        "value": false,
+        "question": "I need to create a new application instance (includes new third party applications)."
+    },
+    {
+        "key": 2,
+        "value": false,
+        "question": "I need to replace physical servers with Virtual Machines (VM’s) or new physical servers due to performance concerns or expected base business growth."
+    },
+    {
+        "key": 3,
+        "value": false,
+        "question": "I need a review of existing infrastructure capacity(memory,CPU,storage, or number of servers) due to performance concerns and/or expected base business growth."
+    },
+    {
+        "key": 4,
+        "value": false,
+        "question": "I need a review of hardware appliance capacity in order to handle more transactions."
+    },
+    {
+        "key": 5,
+        "value": false,
+        "question": "I need to upgrade Platform Build or Reference Architecture, or change the Java layer to or from WebLogic, Tomcat, or JBoss."
+    },
+    {
+        "key": 6,
+        "value": false,
+        "question": "I need to change functionality or upgrade third party software."
+    },
+    {
+        "key": 7,
+        "value": false,
+        "question": "I need to implement new appliances such as firewalls or networking equipment."
+    },
+    {
+        "key": 8,
+        "value": false,
+        "question": "I need to implement DR for an existing application."
+    },
+    {
+        "key": 9,
+        "value": false,
+        "question": "I need to perform a Proof-of-Concept (POC)."
+    },
+    {
+        "key": 10,
+        "value": false,
+        "question": "I need to decommision servers that are not currently being used."
+    }
+]}
