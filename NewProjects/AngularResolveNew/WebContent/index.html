@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Resolve</title>
+    
+    
+	<script type="text/javascript" src="lib/jquery-1.12.4.min.js"></script>
+	<link rel="stylesheet" href="lib/jquery-ui-1.11.4/jquery-ui.min.css"/>
+	<script type="text/javascript" src="lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="lib/angular-1.0.2/angular.js"></script>
+	<!-- <script type="text/javascript" src="lib/angular-1.0.2/angular-resource.js"></script> -->
+	<link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"/>
+	<script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+	
+	
+	<script type="text/javascript" src="js/app.js"></script>
+	
+	 <!-- When you load angular at the bottom, you need to create the "ng-cloak" rules yourself -->
+     <style type="text/css">
+        @charset "UTF-8";
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none;
+        }
+
+        ng\:form {
+            display: block;
+        }
+    </style> 
+	
+   
+ </head>
+<body>
+<div ng-app="app" ng-controller="AppCtrl" class="well well-large" style="width: 100%;">
+    <!--   -->
+ 	<div class="alert" ng-class="alertType" ng-cloak>
+        {{alertMessage}}
+    </div>    
+    <ul class="nav nav-tabs" ng-cloak>
+        <li ng-repeat="tab in tabs" ng-class="checkActive(tab.url)">
+            <a href="{{tab.url}}">{{tab.title}}</a>
+        </li>
+    </ul>
+    
+    Contents:
+    <br/>
+    <ng-view></ng-view>
+    
+    <br/>
+    
+    Footer:
+    
+    <br/>
+    sample footer
+</div> 
+
+</body>
+</html>

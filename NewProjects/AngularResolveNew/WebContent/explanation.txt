@@ -1,0 +1,21 @@
+
+1> on click tab. url -> #/ or #/pagename 
+
+2> $routeProvider.when("/") -> home
+
+3> $routeProvider.when("/capacity") -> capacity view resolve  or $routeProvider.when("/:page")
+
+templateurl : "capacity.html"
+	A >  function ($q, $route, $timeout){
+            	return pageResolver ($q, $route, $timeout,"capacity");
+            }
+	B> pageResolver ($q, $route, $timeout,"capacity") 
+		based on pagename -> fetch object using webservice
+		call -> successcallback -> $q-> resolve -> modelOBj -> Controller -> mainObject
+
+capacity.html has logic to access mainObject and  dispaly in GUI
+
+ng-view ( templateurl )
+		
+
+		
