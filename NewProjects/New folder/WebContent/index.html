@@ -1,0 +1,26 @@
+<head>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+<script src="js/myapp.js"></script>
+</head>
+<body>
+<div ng-app="myModule" ng-controller="learnController" >
+ <!--  <div ng-repeat="student in students">
+  {{student.name}}
+  {{student.age}}
+  </div> -->
+  <div ng-repeat=" project in myProjects.configDetailList">
+  {{ project.configName}}
+   {{ project.dataDetails.targetDate}}
+    {{ project.dataDetails.itgField}}
+    {{project.supportAssignorName}}
+     {{project.configStatus}}
+  </div>
+<!--  <!--  
+<!-- <input type='text'value=name ng-model="name" /> -->
+{{studentobj.age}}
+{{studentobj.name}}
+
+</div> --> -->
+
+
+</body>

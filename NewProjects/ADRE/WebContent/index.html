@@ -9,16 +9,31 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.js"></script>
-<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
-<script src="../lib/angular-route/angular-route.js"></script>
+ <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+<!-- <script src="../lib/angular-route/angular-route.js"></script>  -->
+<!-- <script src="lib/angular-1.5.6/angular-route.min.js"></script> -->
 <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.js"></script>
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript" src="app/components/common/vendor/jquery.js"></script>
+
+	<!-- Jquery UI -->
+	<script src="lib/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="lib/jquery-ui-1.11.4/jquery-ui.css">
+	<link rel="stylesheet" href="lib/jquery-ui-1.11.4/jquery-ui.theme.css">
+	
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jqueryExt.js"></script>
+	
 <!-- common -->
 <!--<script src="app/components/common/directives/Esc.js"></script>
 <script src="app/components/common/services/EscAuthorize.js"></script>-->
 
 <!-- app -->
+<script src="app/tabDir.js"></script>
+<script src="app/AdreConstants.js"></script>
+<script src="app/AdreCtrl.js"></script>
+<script src="app/PageResolverState.js"></script>
 <script src="app/app.js"></script>
 <link rel="stylesheet" href="app/style.css">
 <!--<script src="app/components/home/HomeCtrl.js"></script>-->
@@ -43,13 +58,15 @@
 
 <script src="app/components/common/services/AuthService.js"></script>
 <script src="app/components/common/services/EscAuthorize.js"></script>
-<script src="app/components/common/services/EngagementData.js"></script>
+<script src="app/components/common/services/WebserviceFactory.js"></script>
 <script src="app/components/common/services/Eai.js"></script>
 <script src="app/components/common/services/Engagement.js"></script>
 
+
+> 
 <!--<script src="Registration/Registration.js"></script>-->
 </head>
-<body ng-app="adre">
+<body ng-app="adre" ng-controller="AdreCtrl">
 	<div class="container">
 		<header>            
 			<div class="container">
@@ -93,7 +110,7 @@
 		</nav>
 	   
 		<div ui-view>
-			<!--<ng-view></ng-view>-->
+		
 		</div>
 
 	</div>

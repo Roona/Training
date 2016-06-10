@@ -1,0 +1,42 @@
+{"questions": [
+    {
+        "key": 0,
+        "value": false, 
+        "question": "Servers are CPU-bound."                
+    },
+    {
+        "key": 1,
+        "value": false, 
+        "question": "Servers are memory-constrained."                
+    },
+    {
+        "key": 2,
+        "value": false, 
+        "question": "Servers are I/O-bound."                
+    },
+    {
+        "key": 3,
+        "value": false, 
+        "question": "Virtual servers need additional local storage."                
+    },
+    {
+        "key": 4,
+        "value": false, 
+        "question": "Virtual or physical servers need a new NAS share or existing NAS share expanded."                
+    },
+    {
+        "key": 5,
+        "value": false, 
+        "question": "Physical servers need additional SAN storage."                
+    },
+    {
+        "key": 6,
+        "value": false, 
+        "question": "The application needs additional appliances or servers."                
+    },
+    {
+        "key": 7,
+        "value": false, 
+        "question": "None of the above stand out as the root of performance issues, and an Architect needs to review the system for the proper adjustments."                
+    }
+]}

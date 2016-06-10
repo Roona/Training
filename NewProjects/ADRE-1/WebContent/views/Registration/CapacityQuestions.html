@@ -1,0 +1,21 @@
+<div class="container animate-hide" ng-show="Engagement.capacityEngagement">
+    <div class="row">
+        <div class="panel panel-default" style="max-width: 780px;">
+            <div class="panel-heading"><h3 class="purple">Capacity Questionaire</h3></div>
+            <div class="panel-body">
+                 <div class="row " ng-repeat="q in questions">
+                    <div class="col-sm-1 ">
+                        <input type="checkbox" ng-model="q.value">
+                    </div>
+                    <div class="col-sm-11 ">
+                        {{q.question}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="Engagement.isRegistration">
+        <button class="btn stdBtn" ui-sref="/QuestionsScreen" ng-click="processQuestions()"> << Back</button>
+        <button class="btn stdBtn" ui-sref="/EngagementScreen" ng-click="processQuestions()">Engagement >></button>
+    </div>
+</div>

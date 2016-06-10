@@ -1,0 +1,48 @@
+<!-- 
+  <tabs>
+    <pane title="Engagement Questions">
+      <div><engagement-Questions></engagement-Questions></div>
+    </pane>
+    <pane title="Capacity Questions">
+      <div><capacity-Questions></capacity-Questions></div>
+    </pane>
+    <pane title="Engagement">
+      <div>
+	   <div id="engagementForm" class="container animate-hide">
+	
+	    <engagement-Form></engagement-Form>
+	    
+	    <div class="row">
+	        <button class="btn stdBtn" ui-sref="/QuestionsScreen" ng-show="!ec.Engagement.capacityEngagement"> << Back</button>&nbsp;
+	        <button class="btn stdBtn" ui-sref="/CapacityScreen" ng-show="ec.Engagement.capacityEngagement"> << Back</button>&nbsp;
+	        <button class="btn stdBtn" ng-click="ec.saveEngagement()">Save</button>&nbsp;
+	        <button class="btn stdBtn" ng-click="ec.createEngagement()">Finalize</button>&nbsp;&nbsp;&nbsp;&nbsp;
+	        <button class="btn btn-danger" ng-click="ec.cancelEngagement()">Delete</button>
+	    </div>    
+		</div>
+	</div>
+    </pane>
+  </tabs>
+ -->
+
+<div class="container animate-hide" style="margin:10px;" >
+<div id="navbarCollapse" class="collapse navbar-collapse">
+					  
+					
+	<!-- <tabs>
+    <pane ng-repeat="tab in tabs" ui-sref="{{tab.url}}" title="{{tab.title}}">
+     
+    </pane>
+					    
+	</tabs> -->
+	 	<ul class="nav navbar-nav" ng-cloak> 
+					        <li ng-repeat="tab in tabs" ng-class="checkActive(tab.url)" ng-cloak>
+					            <a ui-sref="{{tab.url}}" ng-show="tab.visible" href="{{tab.url}}" ng-cloak>{{tab.title}}</a>
+					        </li> 
+					    </ul> 
+					
+</div>
+
+ <div ui-view></div>
+
+</div>

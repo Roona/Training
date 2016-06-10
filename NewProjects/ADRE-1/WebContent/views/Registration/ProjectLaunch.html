@@ -1,0 +1,96 @@
+<div id="projectLaunchForm" class="container animate-hide"> 
+    <div class="row">
+        <div class="panel panel-default" style="max-width: 780px;">
+            <div class="panel-heading"><h3 class="purple">Project Launch</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12" border-style: dashed;>
+                        <label class="text-left">Project Filter(s)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input type="checkbox"/>&nbsp; View All Open Engagements<br/>
+                        <input type="checkbox"/>&nbsp; Prjectes Needing an IA<br/>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="checkbox"/>&nbsp; Completed Engagements<br/>
+                        <input type="checkbox"/>&nbsp; Cancelled Engagements<br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="text-left">Project(s)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table  cellpadding="0" border="0" cellspacing="0" ng-init="getProject();" class="table-12x color2">
+                            <thead>
+                                <tr id="heading">
+                                    <th>
+                                        <a ng-href="#" ng-click="sortPrjType = 'configName'; sortPrjReverse = !sortPrjReverse">
+                                        Config Name
+                                        <span ng-show="sortPrjType == 'configName' && !sortPrjReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortPrjType == 'configName' && sortPrjReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a ng-href="#" ng-click="sortPrjType = 'dataDetails.targetDate'; sortPrjReverse = !sortPrjReverse">
+                                        Target Date
+                                        <span ng-show="sortPrjType == 'dataDetails.targetDate' && !sortPrjReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortPrjType == 'dataDetails.targetDate' && sortPrjReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a ng-href="#" ng-click="sortPrjType = 'dataDetails.itgField'; sortPrjReverse = !sortPrjReverse">
+                                        ITG
+                                        <span ng-show="sortPrjType == 'dataDetails.itgField' && !sortPrjReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortPrjType == 'dataDetails.itgField' && sortPrjReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a ng-href="#" ng-click="sortPrjType = 'supportAssignorName'; sortPrjReverse = !sortPrjReverse">
+                                        Manager
+                                        <span ng-show="sortPrjType == 'supportAssignorName' && !sortPrjReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortPrjType == 'supportAssignorName' && sortPrjReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                    <th>
+                                        <a ng-href="#" ng-click="sortPrjType = 'configStatus'; sortPrjReverse = !sortPrjReverse">
+                                        Status
+                                        <span ng-show="sortPrjType == 'configStatus' && !sortPrjReverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="sortPrjType == 'configStatus' && sortPrjReverse" class="fa fa-caret-up"></span>
+                                        </a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tr class="color" ng-class="proj === selectedEngagement? 'selected':''" 
+                                ng-repeat="proj in myProjects.configDetailList | orderBy:sortPrjType:sortPrjReverse | filter:searchPrj" 
+                                ng-click="setSelectedEngagement(proj)">
+                                <td> 
+                                    {{proj.configName}} 
+                                </td>
+                                <td>{{proj.dataDetails.targetDate}}</td>
+                                <td>{{proj.dataDetails.itgField}}</td>
+                                <td>{{proj.supportAssignorName}}</td>
+                                <td>{{proj.configStatus}}</td>
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                <input type="text" class="form-control" placeholder="Search Project Data" ng-model="searchPrj">
+                            </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn stdBtn" ui-sref="/QuestionsScreen" ng-show="Engagement.configStatus == 'Draft'" ng-disabled="dataPresent" data-toggle="tooltip" title="select a project to open">Open</button>&nbsp;        
+        <button class="btn stdBtn" ui-sref="/Registration" ng-show="Engagement.configStatus == 'Completed'" ng-disabled="dataPresent" data-toggle="tooltip" title="select a project to open">Review</button>&nbsp;
+        <button class="btn stdBtn" ng-click="clear();" ui-sref="/QuestionsScreen" ng-show="!Engagement.isRegistration" data-toggle="tooltip" title="create a new engagement">New</button>&nbsp;
+    </div> 
+</div>
