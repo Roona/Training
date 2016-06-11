@@ -12,7 +12,7 @@
 							ng-click="qmc.processChangeButton()" >
 					</div>
 					<div ng-if="etc.Engagement.configStatus != 'Completed'">
-						<input type="checkbox" ng-model="q.value"
+						<input type="checkbox" ng-disabled ="q.disabled" ng-model="q.value"
 							ng-click="qmc.processChangeButton()" >
 					</div>
                     
