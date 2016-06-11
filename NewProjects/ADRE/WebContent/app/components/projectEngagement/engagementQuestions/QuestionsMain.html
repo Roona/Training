@@ -1,17 +1,29 @@
-<div class="row" >
-    <div class="panel panel-default" style="max-width: 780px;">
-        <div class="panel-heading ">
-            <h3 class="purple">Engagement Questionaire</h3>
-        </div>
-        <div class="panel-body ">
-            <div class="row " ng-repeat="q in qmc.questions">
-                <div class="col-sm-1 ">
-                    <input type="checkbox" ng-disabled="" ng-model="q.value" ng-click="qmc.processChangeButton()" ng-disabled="false">
-                </div>
-                <div class="col-sm-11 ">
-                    {{q.question}}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="row">
+	<div class="panel panel-default" style="max-width: 780px;">
+		<div class="panel-heading ">
+			<h3 class="purple">Engagement Questionaire</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row " ng-repeat="q in qmc.questions">
+				<div class="col-sm-1 ">
+
+					<div ng-if="etc.Engagement.configStatus == 'Completed'">
+						<input type="checkbox" disabled="disabled" ng-model="q.value"
+							ng-click="qmc.processChangeButton()" >
+					</div>
+					<div ng-if="etc.Engagement.configStatus != 'Completed'">
+						<input type="checkbox" ng-model="q.value"
+							ng-click="qmc.processChangeButton()" >
+					</div>
+                    
+				</div>
+				<div class="col-sm-11 ">{{q.question}}</div>
+			</div>
+		</div>
+		<!-- to enable/disable capacity tab -->
+		{{qmc.processChangeButton();}}
+	</div>
 </div>
+
+
+

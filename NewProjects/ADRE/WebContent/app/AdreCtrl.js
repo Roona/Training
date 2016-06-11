@@ -4,7 +4,10 @@
  * @FileName	:	AdreCtrl.js
  */
 
-var  AdreCtrl =  function($scope, $rootScope, $location,$state) {
+var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
+	
+	
+	$scope.user={name:"Steven Lopez",id:1234};
 	
 	/* State Provider Events*/ 	
 	
@@ -19,12 +22,17 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state) {
         $scope.active = "progress-success";*/
 
         $scope.newLocation = $location.path();
-        /*if($scope.newLocation =='/EngagementTab'){
-        	//alert("test");
-        	$location.path('/EngagementTab/engagementTabEngQues'); 
-        	$location.replace();
-        	//$('#engagementQues').trigger('click');
-        }*/
+        if($scope.newLocation =='/EngagementTab'){
+        	
+            $timeout(function () {
+            	//alert($('#engagementQues').attr("ui-sref"));
+            	//window.location.href = "#/EngagementTab/engagementQues";
+            	$('#engagementQues').click();
+        	    console.log( "ready!" );
+            	
+            }, 500);
+        		
+        }
         removeProgress();
     });
     $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams,errorMsg) {
@@ -51,30 +59,30 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state) {
                        title:adreConstants.TAB_ENGAGEMENT_QUES,
                        id :"engagementQues",
                        url  :".engagementTabEngQues",
-                       newUrl :"/EngementTab/engagementTabEngQues",
+                       newUrl :"/EngagementTab/engagementTabEngQues",
                        visible : true
                    },
                    {
                        title:adreConstants.TAB_CAPACITY_QUES,
                        id :"capacityQues",
                        url  :".engagementTabCapQues",
-                       newUrl :"/EngementTab/engagementTabCapQues",
+                       newUrl :"/EngagementTab/engagementTabCapQues",
                        visible : false
                    },
                    {
                        title:adreConstants.TAB_ENAGAGEMENT_TAB,
                        id :"engagement",
                        url  :".engagementTabEngagement",
-                       newUrl :"/EngementTab/engagementTabEngagement",
+                       newUrl :"/EngagementTab/engagementTabEngagement",
                        visible : true
                    }
                ];
 
 
     // Function to set active tab
-    $scope.checkActive = function (url) {
-        if (url ==   $scope.newLocation) {
-            return "active";
+    $scope.checkActive = function (newUrl) {
+        if (newUrl ==   $scope.newLocation) {
+            return "btn-primary";
         } else {
             return "";
         }

@@ -13,6 +13,18 @@
         self.sortPrjReverse = false;
         self.searchPrj = '';
         
+        self.changeFilter = function($event, id, keyword){
+        	
+        	var checkbox = $event.target;
+        	 if(checkbox.checked){
+        		 self.searchPrj = keyword;
+        	 } else{
+        		 self.searchPrj = '';
+        	 }
+        	
+        	
+        }
+        
         self.setSelectedEngagement = function(val) {
             self.selectedEngagement = val;
             Engagement.initialize(self.selectedEngagement);

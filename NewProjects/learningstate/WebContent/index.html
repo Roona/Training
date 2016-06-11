@@ -1,0 +1,30 @@
+
+<html>
+<head>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+ <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+ <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.js"></script>
+ <script src="myappstate.js"></script>
+ <script src="controller/homeController.js"></script>
+  <script src="controller/studentsController.js"></script>
+   <script src="controller/courseController.js"></script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-app="demo" >
+
+<a ui-sref="home" href="/home">home</a>
+<a ui-sref="students">students</a>
+<a ui-sref="course">course</a>
+
+<br/>
+<br/>
+
+Contents:
+
+<div ui-view>
+		
+		</div>
+
+</body>
+</html>

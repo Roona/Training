@@ -9,11 +9,11 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <input type="checkbox"/>&nbsp; View All Open Engagements<br/>
+                    <input type="checkbox" ng-click="plmc.changeFilter($event, e.id,'Draft')"  />&nbsp; View All Open Engagements<br/>
                     <input type="checkbox"/>&nbsp; Prjectes Needing an IA<br/>
                 </div>
                 <div class="col-sm-6">
-                    <input type="checkbox"/>&nbsp; Completed Engagements<br/>
+                    <input type="checkbox"  ng-click="plmc.changeFilter($event, e.id,'completed')"  />&nbsp; Completed Engagements<br/>
                     <input type="checkbox"/>&nbsp; Cancelled Engagements<br/>
                 </div>
             </div>

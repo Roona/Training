@@ -1,26 +1,81 @@
+<html ng-app="demo">
+
 <head>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+ <script src="" https://code.angularjs.org/1.5.6/angular-route.js"></script>
+// <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+ '
+
 <script src="js/myapp.js"></script>
+
+<style>
+.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+
+.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+body{ background: #EDECEC; padding:50px}
+</style>
 </head>
 <body>
-<div ng-app="myModule" ng-controller="learnController" >
+<div class="container"  >
+	<div class="row">
+		                                <div class="col-md-6">
+                                    <!-- Nav tabs --><div class="card">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#/home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                                        <li role="presentation"><a ahref="#/students" aria-controls="students" role="tab" data-toggle="tab">students</a></li>
+                                        <li role="presentation"><a ahref="#/course" aria-controls="course" role="tab" data-toggle="tab">course</a></li>
+                                       
+                                    </ul>
+<ng-view></ng-view>
+                                   
+                                </div>
+	</div>
+</div>
+<!-- <style>
+.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; }
+.tab-content{padding:20px}
+
+.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+body{ background: #EDECEC; padding:50px}
+</style> -->
+
+<!-- <div ng-app="myModule" ng-controller="learnController" > -->
  <!--  <div ng-repeat="student in students">
   {{student.name}}
   {{student.age}}
   </div> -->
-  <div ng-repeat=" project in myProjects.configDetailList">
+ <!--  <div ng-repeat=" project in myProjects.configDetailList">
   {{ project.configName}}
    {{ project.dataDetails.targetDate}}
     {{ project.dataDetails.itgField}}
     {{project.supportAssignorName}}
      {{project.configStatus}}
   </div>
-<!--  <!--  
-<!-- <input type='text'value=name ng-model="name" /> -->
+ <!--  
+<!-- <input type='text'value=name ng-model="name" />
 {{studentobj.age}}
 {{studentobj.name}}
 
-</div> --> -->
-
-
+</div> --> --> -->
+<!-- <a ui-sref="home">Home</a>
+<a ui-sref="students">student</a>
+<a ui-sref="course">course</a> -->
 </body>
+</html>

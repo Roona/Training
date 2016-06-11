@@ -23,9 +23,9 @@
         
         
         var selectCapacityQuestion =function(){
-        	
-        	for(var i=0; i< Engagement.tempCapQuestions.length;i++) {
-        		var tkey = Engagement.tempCapQuestions[i];
+        	if(Engagement.capQuestions != undefined && Engagement.capQuestions != null){   
+        	for(var i=0; i< Engagement.capQuestions.length;i++) {
+        		var tkey = Engagement.capQuestions[i];
         		
         		 for(var q in self.capQuestions) {
         			 
@@ -34,6 +34,7 @@
                      }
                  }
             }
+        	}
         }
         
         selectCapacityQuestion();

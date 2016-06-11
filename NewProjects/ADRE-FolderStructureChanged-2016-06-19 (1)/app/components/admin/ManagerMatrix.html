@@ -1,0 +1,44 @@
+<div id="mgrMatrixForm" class="container" class="animate-hide">
+    <div class="row">
+        <div class="panel panel-default" style="max-width: 780px;">
+            <div class="panel-heading">
+                <h3 class="purple">Manager Matrix</h3></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>Assignor</label><br/>
+                        <input type="text" name="Assignor" placeholder="Assignor" ng-model="" min="0" max="9999999" required />
+                        <span ng-message="engagementForm.ITG.$error" style="color:red" class="error help-block">{{itgError}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <select multiple ng-multiple="true" ng-model="removeIas" class="iaList">
+                            <option ng-selected="{{i == removeIas}}"  ng-repeat="i in addedIaNames" value="{{i}}" class="iaListOptions">
+                                {{i.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>Assignor Member</label><br/>
+                        <input type="text" name="assignorMember" placeholder="Assignor Member" ng-model="" min="0" max="9999999" required />
+                        <span ng-message="engagementForm.ITG.$error" style="color:red" class="error help-block">{{itgError}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <select multiple ng-multiple="true" ng-model="removeIas" class="iaList">
+                            <option ng-selected="{{i == removeIas}}"  ng-repeat="i in addedIaNames" value="{{i}}" class="iaListOptions">
+                                {{i.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-primary" ng-click="saveEngagement()">Save</button>&nbsp;
+        <button class="btn btn-danger" ng-click="cancelEngagement()">Cancel</button>
+    </div>
+</div>
