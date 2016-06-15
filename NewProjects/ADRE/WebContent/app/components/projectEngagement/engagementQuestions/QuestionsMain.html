@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="panel panel-default" style="max-width: 780px;">
+	<div class="panel panel-default" style="max-width: 780px;" ng-init="qmc.processChangeButton()">
 		<div class="panel-heading ">
 			<h3 class="purple">Engagement Questionaire</h3>
 		</div>
@@ -19,9 +19,7 @@
 				</div>
 				<div class="col-sm-11 ">{{q.question}}</div>
 			</div>
-		</div>
-		<!-- to enable/disable capacity tab -->
-		{{qmc.processChangeButton();}}
+		</div>	
 	</div>
 </div>
 

@@ -1,22 +1,37 @@
-<h> courses </h>
+<!-- <h> IT courses </h>
 <ul>
  <li ng-repeat="course in courses">
 {{course}}
 </li>
  
+List of courses
+<a ui-sref="course.engineering" >Engineering</a>
+<a ui-sref="course.medicine" >Medicine</a>
 
-<!-- <a ui-sref="mba" >MBA</a>
-<a ui-sref="students">Engineering</a>
-<a ui-sref="course">MCA</a>
 
 <br/>
 <br/>
 
-Contents:
+
 
 <div ui-view>
 		
-		</div> -->
+		</div>
 
 
-</ul>
+</ul> -->
+<body ng-app="demo" ng-controller="courseController" >
+<div id="tabs">
+<div id="navbarCollapse" class="collapse navbar-collapse">
+<ul class="nav navbar-nav" ng-cloak>
+    <li ng-repeat = "tab in tabs" ng-show="tab.visible"><a ui-sref="{{tab.sref}}" href="">{{tab.tabname}}</a></li>
+    <!-- <li><a ui-sref="students"  href="#tabs-2">students</a></li>
+    <li><a ui-sref="course"  href="#tabs-3">course</a></li> -->
+    <div ui-view>
+		
+</div>
+  </ul>
+  </div>
+
+		</div>
+		</body>

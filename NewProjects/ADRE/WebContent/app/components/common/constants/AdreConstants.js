@@ -7,6 +7,7 @@
 
 var AdreConstants = function(){
 	
+	
 	// Keywords
 	this.ENGAGEMENT = "Engagement";
 	this.CAPACITY = "Capacity";

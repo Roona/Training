@@ -5,10 +5,10 @@
     //     'questionsCtrl', 'capQuestionsCtrl', 'engagementCtrl', 'ui.bootstrap',
     //     'projectLaunch', 'engagementForm', 'engagementQuestions', 'capacityQuestions']);
     var app = angular.module('adre', ['ui.router', 'projectLaunchCtrl', 'projectLaunchMain', 'questionsCtrl', 'engagementQuestions',
-        'capQuestionsCtrl', 'capacityQuestions','engagementCtrl', 'engagementForm', 'registrationCtrl','engagementTabCtrl']);
+        'capQuestionsCtrl', 'capacityQuestions','engagementCtrl', 'engagementForm', 'registrationCtrl','engagementTabCtrl','AdreCtrlModule','homeCtrl']);
     
     app.controller("MenuCtrl",MenuCtrl);
-    app.controller("AdreCtrl",AdreCtrl);
+  //  app.controller("AdreCtrl",AdreCtrl);
     
     var error = {
             name: 'error',
@@ -30,7 +30,6 @@
             name: 'EngagementTab',
             url: '/EngagementTab',
             templateUrl: 'app/components/projectEngagement/engagementTab/EngagementTab.html',
-           // child: ['engagementTabEngQues'],
             controller: 'EngagementTabCtrl',
             controllerAs: 'etc',
             resolve    :{        	
@@ -114,7 +113,7 @@
                     url: 'app/components/help/',
                     templateUrl: 'app/components/help/Help.html'
                 })
-                //Registration Screens
+    /*            //Registration Screens
                 .state('/QuestionsScreen', {
                     templateUrl: 'app/components/projectEngagement/engagementQuestions/Questions.html',
                     controller: 'QuestionsCtrl',
@@ -143,7 +142,7 @@
                     // }
                     controller: 'RegistrationCtrl',
                     controllerAs: 'rc'
-                })
+                })*/
                 
                 .state(engagementTab)
                 .state(engagementTabEngQues)

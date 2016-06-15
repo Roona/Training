@@ -4,10 +4,12 @@
  * @FileName	:	AdreCtrl.js
  */
 
+var app = angular.module("AdreCtrlModule",[]);
+
 var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
+	self = this;
 	
-	
-	$scope.user={name:"Steven Lopez",id:1234};
+	self.user={name:"Steven Lopez",id:1234};
 	
 	/* State Provider Events*/ 	
 	
@@ -30,7 +32,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
             	$('#engagementQues').click();
         	    console.log( "ready!" );
             	
-            }, 500);
+            }, 200);
         		
         }
         removeProgress();
@@ -53,7 +55,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
     
     // Home Page Tabs
     
-    $scope.tabs = [
+    /*self.tabs = [
                    
                    {
                        title:adreConstants.TAB_ENGAGEMENT_QUES,
@@ -77,7 +79,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
                        visible : true
                    }
                ];
-
+*/
 
     // Function to set active tab
     $scope.checkActive = function (newUrl) {
@@ -92,3 +94,6 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
    
 
 };
+
+
+app.controller("AdreCtrl",AdreCtrl);

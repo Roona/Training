@@ -3,7 +3,7 @@
     var qstn = angular.module('questionsMainCtrl', ['webserviceFactory', 'engagement']);
     qstn.controller("QuestionsMainCtrl", QuestionsMainCtrl);
     
-    function QuestionsMainCtrl($http, Engagement, $filter, WebserviceFactory, $scope) {
+    function QuestionsMainCtrl($http, Engagement, $filter, WebserviceFactory, $scope,$rootScope) {
         self = this;
         self.Engagement = Engagement;
         self.questions = $scope.qc.questions;
@@ -70,7 +70,7 @@
                 }
             }
             
-            $scope.$parent.$parent.tabs[1].visible = goCapacity;
+            $scope.$parent.etc.tabs[1].visible = goCapacity;
             
         };
        /* self.processChangeButton = function () {

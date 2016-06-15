@@ -1,4 +1,4 @@
-var app = angular.module("demo", [ "ui.router" ,"homeControllerModule","studentsControllerModule","courseControllerModule"]);
+var app = angular.module("demo", [ "ui.router" ,"homeControllerModule","studentsControllerModule","courseControllerModule","mainControllerModule"]);
 
 
 
@@ -41,13 +41,29 @@ var StateConfig = function($stateProvider, $urlRouterProvider) {
             name: 'course',
             url: '/',
             templateUrl: 'templates/course.html',
-            controller : 'courseController'
+            controller : 'courseController',
+            	controllerAs:'cc' 
         };
+    var engineering = {
+            name: 'course.engineering',
+            url: '/',
+            templateUrl: 'templates/engineering.html',
+            controller : 'engineeringController'
+        };
+    var medicine = {
+            name: 'course.medicine',
+            url: '/',
+            templateUrl: 'templates/medicine.html',
+            controller : 'medicineController'
+        };
+    
     
     $stateProvider    
     	.state(home)
     	.state(students)
     	.state(course)
+    	.state(engineering)
+    	.state(medicine)
         ;
          
         
@@ -55,6 +71,9 @@ var StateConfig = function($stateProvider, $urlRouterProvider) {
 
 
 app.config(StateConfig);
+
+
+//app.controller('mainController',mainController);
 
 
 

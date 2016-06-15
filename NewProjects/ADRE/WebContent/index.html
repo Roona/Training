@@ -35,7 +35,7 @@
 <script src="app/components/common/services/PageResolverState.js"></script>
 <script src="app/app.js"></script>
 <link rel="stylesheet" href="app/style.css">
-<!--<script src="app/components/home/HomeCtrl.js"></script>-->
+<script src="app/components/home/HomeCtrl.js"></script>
 
 <script src="app/components/projectEngagement/projectLaunch/ProjectLaunchCtrl.js"></script>
 <script src="app/components/projectEngagement/projectLaunch/ProjectLaunchMainCtrl.js"></script>
@@ -69,7 +69,7 @@
 
 <!--<script src="Registration/Registration.js"></script>-->
 </head>
-<body ng-app="adre" ng-controller="AdreCtrl">
+<body ng-app="adre" ng-controller="AdreCtrl as ac">
 	<div class="container">
 		<header>            
 			<div class="container">
@@ -83,13 +83,16 @@
         <!--Navigation bar -->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid navbar-custom ">                
-				<div class="navbar-header">
-					<li ng-class="{ active: isActive('/Home')}">
-					<a class="navbar-brand" ui-sref="/Home">ADRE</a>
+			 <div class="navbar-header" ui-sref="/Home" href="/Home">
+					<li  ng-class="{ active: isActive('/Home')}">
+					<a class="navbar-brand" ui-sref="/Home" href="/Home">ADRE</a>
 					</li>
-				</div>
+				</div> 	
+				
+				
 				<div id="navbarCollapse" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">                        
+					<ul class="nav navbar-nav">   
+						<!-- <li  ng-class="{ active: isActive('/Home')}"><a ui-sref="/Home" href="/Home">ADRE</a>  </li>  -->                  
 						<li ng-class="{ active: isActive('/ProjectLaunch')}"><a ui-sref="/ProjectLaunch">Engagement</a></li>
                         <li ng-class="{ active: isActive('/Capacity')}"><a ui-sref="/Capacity">Capacity Plan</a></li>
                         <li dropdown>
@@ -107,13 +110,12 @@
 			</div>
 			<div class="row white">
 				<div class="col-sm-12">
-						Welcome: {{user.name}}  - {{user.id}}
+						Welcome: {{ac.user.name}}  - {{ac.user.id}}
 				</div>
 			</div>
 		</nav>
 	   
 		<div ui-view>
-			<!--<ng-view></ng-view>-->
 		</div>
 
 	</div>
