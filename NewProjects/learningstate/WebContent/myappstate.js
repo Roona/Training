@@ -22,7 +22,7 @@ var StateConfig = function($stateProvider, $urlRouterProvider) {
     
     var home = {
             name: 'home',
-            url: '/',
+            url: '/home',
             templateUrl: 'templates/home.html',
             controller : 'homeController'
         };
@@ -30,7 +30,7 @@ var StateConfig = function($stateProvider, $urlRouterProvider) {
     
     var students = {
             name: 'students',
-            url: '/',
+            url: '/students',
             templateUrl: 'templates/students.html',
             controller : 'studentsController'
         };
@@ -39,20 +39,20 @@ var StateConfig = function($stateProvider, $urlRouterProvider) {
     
     var course = {
             name: 'course',
-            url: '/',
+            url: '/course',
             templateUrl: 'templates/course.html',
             controller : 'courseController',
             	controllerAs:'cc' 
         };
     var engineering = {
             name: 'course.engineering',
-            url: '/',
+            url: '/engineering',
             templateUrl: 'templates/engineering.html',
-            controller : 'engineeringController'
+            controller : 'engineeringController'	
         };
     var medicine = {
             name: 'course.medicine',
-            url: '/',
+            url: '/medicine',
             templateUrl: 'templates/medicine.html',
             controller : 'medicineController'
         };
