@@ -81,7 +81,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
                ];
 */
 
-    // Function to set active tab
+    // Function to set active engagement tab 
     $scope.checkActive = function (newUrl) {
         if (newUrl ==   $scope.newLocation) {
             return "btn-primary";
@@ -90,7 +90,11 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
         }
     };
 
-    
+ // Function to set active tab in home page
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+
    
 
 };

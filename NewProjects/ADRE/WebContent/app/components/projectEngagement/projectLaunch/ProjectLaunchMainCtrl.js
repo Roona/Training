@@ -9,9 +9,25 @@
         self.selectedEngagement = '';
         self.Engagement = Engagement;
         // table sorting and filtering
-        self.sortPrjType = 'configName';
+        self.sortPrjType = 'configStatus';
         self.sortPrjReverse = false;
         self.searchPrj = '';
+        
+
+        self.colHeader = [
+                         {colName:"configName",displayname:"Config Name",field :"configName" },
+                         {colName:"targetDate",displayname:" Target Date",field :"dataDetails.targetDate" },
+                         {colName:"itg",displayname:" ITG",field :"dataDetails.itgField" },
+                         {colName:"manager",displayname:"Manager",field :"supportAssignorName" },
+                         {colName:"status",displayname:"Status",field :"configStatus" }
+                         
+                         ];
+        
+        self.changeSort = function(colName){
+        	self.sortPrjType = colName; 
+        	self.sortPrjReverse = !self.sortPrjReverse;
+        	
+        };
         
         self.changeFilter = function($event, id, keyword){
         	

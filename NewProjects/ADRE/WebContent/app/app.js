@@ -1,30 +1,45 @@
 (function(angular) {
     "use strict"
-
-    // var app = angular.module('adre', ['ui.router', 'authService', 'homeCtrl', 'projectLaunchCtrl', 
-    //     'questionsCtrl', 'capQuestionsCtrl', 'engagementCtrl', 'ui.bootstrap',
-    //     'projectLaunch', 'engagementForm', 'engagementQuestions', 'capacityQuestions']);
+    
     var app = angular.module('adre', ['ui.router', 'projectLaunchCtrl', 'projectLaunchMain', 'questionsCtrl', 'engagementQuestions',
         'capQuestionsCtrl', 'capacityQuestions','engagementCtrl', 'engagementForm', 'registrationCtrl','engagementTabCtrl','AdreCtrlModule','homeCtrl']);
     
     app.controller("MenuCtrl",MenuCtrl);
-  //  app.controller("AdreCtrl",AdreCtrl);
     
-    var error = {
-            name: 'error',
-            url: 'error',
-            templateUrl: 'app/components/error/pagenotfound.html',
-            resolve: {
-                errorObj: [function () {
-                    return this.self.error;
-                }]
-            },
-            controller: function ($scope, $stateParams, errorObj) {
-                $scope.mainObj = errorObj;
-                
-            }  
+    /* home page url changed for all tabs to make selected tab work*/
+    var home = {
+            name: '/Home',
+            url: '/Home',
+            templateUrl: 'app/components/home/Home.html',
+            controller: 'HomeCtrl',
+            controllerAs: 'hc'
         };
     
+    var projectLaunch = {
+            name: '/ProjectLaunch',
+            url: '/ProjectLaunch',
+            templateUrl: 'app/components/projectEngagement/projectLaunch/ProjectLaunch.html',
+            controller: 'ProjectLaunchCtrl',
+            controllerAs: 'plc'
+        };
+    
+    var capacity = {
+            name: '/Capacity',
+            url: '/Capacity',
+            templateUrl: 'app/components/capacity/Capacity.html'
+        };
+    
+    var managerMatrix = {
+            name: '/ManagerMatrix',
+            url: '/ManagerMatrix',
+            templateUrl: 'app/components/admin/ManagerMatrix.html'
+        };
+    
+    var help = {
+            name: '/Help',
+            url: '/Help',
+            templateUrl: 'app/components/help/Help.html'
+        };
     
     var engagementTab = {
             name: 'EngagementTab',
@@ -80,70 +95,30 @@
         };
     
     
+    var error = {
+            name: 'error',
+            url: 'error',
+            templateUrl: 'app/components/error/pagenotfound.html',
+            resolve: {
+                errorObj: [function () {
+                    return this.self.error;
+                }]
+            },
+            controller: function ($scope, $stateParams, errorObj) {
+                $scope.mainObj = errorObj;
+                
+            }  
+        };
+
     
     app.config(function($stateProvider, $urlRouterProvider) {
             // $urlRouterProvider.otherwise('/Home')
             $stateProvider
-                //Main Menu
-                .state('/Home', {
-                    templateUrl: 'app/components/home/Home.html',
-                    controller: "HomeCtrl",
-                    controllerAs: "hc"
-                })
-                .state('/ProjectLaunch', {
-                    templateUrl: 'app/components/projectEngagement/projectLaunch/ProjectLaunch.html',
-                    controller: 'ProjectLaunchCtrl',
-                    controllerAs: 'plc'
-                    // resolve: {
-                        // function(Engagement) {
-                    //         Engagement.isRegistration = false; //change this to true to see how the Registration screen would function
-                        // }
-                    // }
-                })
-                .state('/Capacity', {
-                    url: 'app/components/capacity',
-                    templateUrl: 'app/components/capacity/Capacity.html'
-                })
-                .state('/ManagerMatrix', {
-                    url: 'app/components/admin/',
-                    templateUrl: 'app/components/admin/ManagerMatrix.html'
-                    // controller: "menuCtrl"
-                })
-                .state('/Help', {
-                    url: 'app/components/help/',
-                    templateUrl: 'app/components/help/Help.html'
-                })
-    /*            //Registration Screens
-                .state('/QuestionsScreen', {
-                    templateUrl: 'app/components/projectEngagement/engagementQuestions/Questions.html',
-                    controller: 'QuestionsCtrl',
-                    controllerAs: 'qc',
-                    resolve    :{        	
-                  	   modelObj: function ($http,$q, $state, $timeout,$stateParams){
-                            	return pageResolverState ($http,$q, $state, $timeout,'QuestionsScreen');
-                            }
-                    }
-                })
-                .state('/CapacityScreen', {
-                    templateUrl: 'app/components/projectEngagement/capacityQuestions/CapacityQuestions.html',
-                    controller: 'CapQuestionsCtrl',
-                    controllerAs: 'cqc'
-                })
-                .state('/EngagementScreen', {
-                    templateUrl: 'app/components/projectEngagement/engagement/Engagement.html',
-                    controller: 'EngagementCtrl',
-                    controllerAs: 'ec'
-                })
-                .state('/Registration', {
-                    url: 'app/components/projectEngagement/completeEngagement',
-                    templateUrl: 'app/components/projectEngagement/completeEngagement/Registration.html',
-                    // controller: function(Engagement) {
-                    //     Engagement.isRegistration = true;
-                    // }
-                    controller: 'RegistrationCtrl',
-                    controllerAs: 'rc'
-                })*/
-                
+                .state(home)
+                .state(projectLaunch)
+                .state(capacity)
+                .state(managerMatrix)
+                .state(help)
                 .state(engagementTab)
                 .state(engagementTabEngQues)
                 .state(engagementTabCapQues)

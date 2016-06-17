@@ -1,3 +1,6 @@
+
+
+
 <div class="row">
     <div class="panel panel-default" style="max-width: 780px;">
         <div class="panel-heading"><h3 class="purple">Project Launch</h3></div>
@@ -10,7 +13,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <input type="checkbox" ng-click="plmc.changeFilter($event, e.id,'Draft')"  />&nbsp; View All Open Engagements<br/>
-                    <input type="checkbox"/>&nbsp; Prjectes Needing an IA<br/>
+                    <input type="checkbox"/>&nbsp; Projects Needing an IA<br/>
                 </div>
                 <div class="col-sm-6">
                     <input type="checkbox"  ng-click="plmc.changeFilter($event, e.id,'completed')"  />&nbsp; Completed Engagements<br/>
@@ -26,8 +29,17 @@
                 <div class="col-sm-12">
                     <table  cellpadding="0" border="0" cellspacing="0" ng-init="plmc.getProject()" class="table-12x color2">
                         <thead>
-                            <tr id="heading">
-                                <th>
+                            <tr id="heading" >
+                            
+                            <th ng-repeat= "col in plmc.colHeader">
+	                            <a ng-href="#"   ng-click="plmc.changeSort(col.field)">
+								{{col.displayname}} 
+								<span ng-show="plmc.sortPrjType == col.field && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+	                            <span ng-show="plmc.sortPrjType == col.field && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+	                            </a> 
+                            </th>
+                             
+                               <!--  <th>
                                     <a ng-href="#" ng-click="plmc.sortPrjType = 'configName'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
                                     Config Name
                                     <span ng-show="plmc.sortPrjType == 'configName' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
@@ -62,6 +74,8 @@
                                     <span ng-show="plmc.sortPrjType == 'configStatus' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
                                     </a>
                                 </th>
+                                
+                                 -->
                             </tr>
                         </thead>
                         <tr class="color" ng-class="proj === plmc.selectedEngagement? 'selected':''" 

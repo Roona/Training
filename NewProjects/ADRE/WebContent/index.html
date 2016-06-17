@@ -83,24 +83,24 @@
         <!--Navigation bar -->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid navbar-custom ">                
-			 <div class="navbar-header" ui-sref="/Home" href="/Home">
+			 <div class="navbar-header " style="cursor: pointer; cursor: hand !important;" ui-sref="/Home" href="/Home">
 					<li  ng-class="{ active: isActive('/Home')}">
-					<a class="navbar-brand" ui-sref="/Home" href="/Home">ADRE</a>
+					<a class=" navbar-brand " ui-sref="/Home" href="/Home">ADRE</a>
 					</li>
 				</div> 	
 				
 				
-				<div id="navbarCollapse" class="collapse navbar-collapse">
+				<div id="navbarCollapse" >
 					<ul class="nav navbar-nav">   
-						<!-- <li  ng-class="{ active: isActive('/Home')}"><a ui-sref="/Home" href="/Home">ADRE</a>  </li>  -->                  
 						<li ng-class="{ active: isActive('/ProjectLaunch')}"><a ui-sref="/ProjectLaunch">Engagement</a></li>
                         <li ng-class="{ active: isActive('/Capacity')}"><a ui-sref="/Capacity">Capacity Plan</a></li>
-                        <li dropdown>
+                              
+                         <li dropdown>
                             <a href="#" dropdown-toggle ng-class="{active: true}">Admin <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a ui-sref="/ManagerMatrix">Manager Matrix</a></li>                                
+                               <li ng-class="{ active: isActive('/ManagerMatrix')}"><a ui-sref="/ManagerMatrix">Manager Matrix</a></li>                                
                             </ul>
-                        </li>
+                        </li> 
 						<li ng-class="{ active: isActive('/Help')}"><a ui-sref="/Help">Help</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -120,4 +120,5 @@
 
 	</div>
 </body>
+
 </html>
