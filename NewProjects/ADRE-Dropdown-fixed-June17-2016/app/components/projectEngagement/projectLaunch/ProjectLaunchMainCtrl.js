@@ -19,8 +19,7 @@
                          {colName:"targetDate",displayname:" Target Date",field :"dataDetails.targetDate" },
                          {colName:"itg",displayname:" ITG",field :"dataDetails.itgField" },
                          {colName:"manager",displayname:"Manager",field :"supportAssignorName" },
-                         {colName:"status",displayname:"Status",field :"configStatus" },
-                         {colName:"reqDesc",displayname:"Request Desc",field :"capacityPlanData.requestDescription" }
+                         {colName:"status",displayname:"Status",field :"configStatus" }
                          
                          ];
         

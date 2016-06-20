@@ -1,0 +1,22 @@
+<div id="projectLaunchForm" class="container animate-hide" ng-init="plc.clear()"> 
+    
+    <project-Launch-Main></project-Launch-Main>
+    
+    
+    
+    <div class="row">
+    
+     <button class="btn stdBtn" ui-sref="EngagementTab" ng-show="plc.Engagement.configStatus == 'Draft'" data-toggle="tooltip" title="select a project to open">Open</button>&nbsp;        
+       <!--  <button class="btn stdBtn" ui-sref="/QuestionsScreen" ng-show="plc.Engagement.configStatus == 'Draft'" data-toggle="tooltip" title="select a project to open">Open</button>&nbsp; -->        
+        <button class="btn stdBtn" ui-sref="EngagementTab" ng-show="plc.Engagement.configStatus == 'Completed'" data-toggle="tooltip" title="select a project to review">Review</button>&nbsp;
+        <button class="btn stdBtn" ng-click="plc.clear();" ui-sref="EngagementTab" data-toggle="tooltip" title="create a new engagement">New</button>&nbsp;
+    </div> 
+    
+    
+    
+ <!--    <div class="row">
+    	<br/>
+     <button class="btn stdBtn" ui-sref="EngagementTab" ng-show="plc.Engagement.configStatus == 'Draft'" data-toggle="tooltip" title="select a project to open">OpenTab</button>&nbsp;        
+    
+    </div> -->
+</div>

@@ -31,7 +31,7 @@
                         <thead>
                             <tr id="heading" >
                             
-                            <th ng-repeat= "col in plmc.colHeader">
+                            <th ng-repeat= "col in plmc.colHeader" class="tableheading" >
 	                            <a ng-href="#"   ng-click="plmc.changeSort(col.field)">
 								{{col.displayname}} 
 								<span ng-show="plmc.sortPrjType == col.field && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
@@ -88,7 +88,6 @@
                             <td>{{proj.dataDetails.itgField}}</td>
                             <td>{{proj.supportAssignorName}}</td>
                             <td>{{proj.configStatus}}</td>
-                            <td>{{proj.capacityPlanData.requestDescription}}</td>
                         </tr>
                     </table>
                     <div class="form-group">
