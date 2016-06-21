@@ -16,20 +16,20 @@ var pageResolverState = function ($http,$q, $state, $timeout,pageName) {
     }
     
     // success call back function
-    var successCb = function (mainObj) {
+    var successCb = function (resolveObj) {
     	
     	// analyze result obj for error condition 
-        if (mainObj == undefined || mainObj == null || mainObj.result != 'success') {
+        if (resolveObj == undefined || resolveObj == null || resolveObj.result != 'success') {
             deferred.reject("Page not found ");
         }
         else {
-            deferred.resolve(mainObj);
+            deferred.resolve(resolveObj);
         }
     };
     //the timeout is only to exaggerate the example, it's completely unnecessary
    // $timeout(function () {
     	
-    	getNextPageObject($http,pageName,successCb);
+    	getResolveObject($http,pageName,successCb);
     	
    // }, 500);
 
@@ -37,23 +37,23 @@ var pageResolverState = function ($http,$q, $state, $timeout,pageName) {
 }
 
 
-var getNextPageObject = function ($http,pageName,successCb, failCb) {
+var getResolveObject = function ($http,pageName,successCb, failCb) {
 	// webservices
-     var mainObj = {result:"success"};
+     var resolveObj = {result:"success"};
      if(pageName==undefined){
-    	 mainObj={result:"failure"}; 
+    	 resolveObj={result:"failure"}; 
      }
      
     if(pageName == 'CapacityQuestionsScreen'){
     	 
     	 var promise = $http.get('app/components/common/resources/capQuestions.json');
          promise.then(function (response) {
-        	 mainObj.capQuestions = response.data.questions;
-        	 successCb(mainObj);
+        	 resolveObj.capQuestions = response.data.questions;
+        	 successCb(resolveObj);
          },
          function(reason) {
             // alert('Failed');
-             successCb(mainObj);
+             successCb(resolveObj);
          });
      }
      
@@ -63,18 +63,18 @@ var getNextPageObject = function ($http,pageName,successCb, failCb) {
     	 
     	 var promise = $http.get('app/components/common/resources/questions.json');
          promise.then(function (response) {
-        	 mainObj.questions = response.data.questions;
-        	 successCb(mainObj);
+        	 resolveObj.questions = response.data.questions;
+        	 successCb(resolveObj);
          },
          function(reason) {
             // alert('Failed');
-             successCb(mainObj);
+             successCb(resolveObj);
          });
      } 
     else{
-    	successCb(mainObj);
+    	successCb(resolveObj);
     }
-     //return successCb(mainObj);
+     //return successCb(resolveObj);
  };
  
  

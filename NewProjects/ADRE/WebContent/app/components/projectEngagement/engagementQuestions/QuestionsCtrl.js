@@ -3,11 +3,11 @@
     var qstn = angular.module('questionsCtrl', ['engagement','engQuestions']);
     qstn.controller("QuestionsCtrl", QuestionsCtrl);
 
-    function QuestionsCtrl(Engagement,modelObj,EngQuestions ) {
+    function QuestionsCtrl(Engagement,resolveObj,EngQuestions ) {
         self = this;
         self.Engagement = Engagement;
        // self.questions = modelObj.questions;
-        EngQuestions.initialize(modelObj.questions);
+        EngQuestions.initialize(resolveObj.questions);
         // self.questions;
        
         // self.processQuestions = function() {

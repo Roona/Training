@@ -3,7 +3,7 @@
     var etc = angular.module('engagementTabCtrl', ['engagement']);
     etc.controller("EngagementTabCtrl", EngagementTabCtrl);
 
-    function EngagementTabCtrl(Engagement,modelObj) {
+    function EngagementTabCtrl(Engagement) {
         self = this;
         self.Engagement = Engagement;
         

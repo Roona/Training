@@ -63,6 +63,7 @@
 <script src="app/components/common/services/Eai.js"></script>
 <script src="app/components/common/services/Engagement.js"></script>
 <script src="app/components/common/services/EngagementQuestions.js"></script>
+<script src="app/components/common/services/CapacityQuestions.js"></script>
 <script src="app/components/projectEngagement/engagementTab/EngagementTabCtrl.js"></script>
 
 <script>
@@ -76,6 +77,9 @@
                  $(this).children('.sub-menu').slideUp(200); 
             }
         );
+        
+       // alert("home");
+       // $("#adrehome").trigger('click');
        
     }); // end ready
 </script>
@@ -97,7 +101,7 @@
 			<div class="container-fluid navbar-custom " style="z-index:200;" >                
 			 <div class="navbar-header " style="cursor: pointer; cursor: hand !important;" ui-sref="/Home" href="/Home">
 					<li  ng-class="{ active: isActive('/Home')}">
-					<a class=" navbar-brand " ui-sref="/Home" href="/Home">ADRE</a>
+					<a id="adrehome" class="navbar-brand " ui-sref="/Home" href="/Home">ADRE</a>
 					</li>
 				</div> 	
 				

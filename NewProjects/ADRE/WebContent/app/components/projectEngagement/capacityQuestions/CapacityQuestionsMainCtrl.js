@@ -1,13 +1,13 @@
 (function (angular, _) {
     "use strict"
-    var cap = angular.module('capQuestionsMainCtrl', ['engagement']);
+    var cap = angular.module('capQuestionsMainCtrl', ['engagement','capQuestions']);
     cap.controller("CapQuestionsMainCtrl", CapQuestionsMainCtrl);
 
-    function CapQuestionsMainCtrl($scope,$http, Engagement) {
+    function CapQuestionsMainCtrl($scope, Engagement,CapQuestions) {
         self = this;
         self.Engagement = Engagement;
-        self.capQuestions = $scope.cqc.capQuestions;;
-        
+        //self.capQuestions = $scope.cqc.capQuestions;;
+        self.capQuestions=CapQuestions.capQuestions;
        /* activate();
 
         // self.getCapQuestions = function() {

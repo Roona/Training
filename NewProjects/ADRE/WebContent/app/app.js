@@ -48,7 +48,7 @@
             controller: 'EngagementTabCtrl',
             controllerAs: 'etc',
             resolve    :{        	
-         	   modelObj: function ($http,$q, $state, $timeout,$stateParams){
+            	resolveObj: function ($http,$q, $state, $timeout,$stateParams){
                    	return pageResolverState ($http,$q, $state, $timeout,'EngagementTab');
                    }
             }    
@@ -62,7 +62,7 @@
             controller: 'QuestionsCtrl',
             controllerAs: 'qc',
             resolve    :{        	
-          	   modelObj: function ($http,$q, $state, $timeout,$stateParams){
+          	   resolveObj: function ($http,$q, $state, $timeout,$stateParams){
                     	return pageResolverState ($http,$q, $state, $timeout,'QuestionsScreen');
                     }
             }   
@@ -75,7 +75,7 @@
             controller: 'CapQuestionsCtrl',
             controllerAs: 'cqc',
             resolve    :{        	
-          	   modelObj: function ($http,$q, $state, $timeout,$stateParams){
+            	resolveObj: function ($http,$q, $state, $timeout,$stateParams){
                     	return pageResolverState ($http,$q, $state, $timeout,'CapacityQuestionsScreen');
                     }
             }   
@@ -88,7 +88,7 @@
             controller: 'EngagementCtrl',
             controllerAs: 'ec',
             resolve    :{        	
-          	   modelObj: function ($http,$q, $state, $timeout,$stateParams){
+            	resolveObj: function ($http,$q, $state, $timeout,$stateParams){
                     	return pageResolverState ($http,$q, $state, $timeout,'EngagementTabScreen');
                     }
             }   
