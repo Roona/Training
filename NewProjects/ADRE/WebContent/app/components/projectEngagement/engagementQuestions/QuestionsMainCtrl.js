@@ -1,13 +1,13 @@
 (function (angular, _) {
     "use strict"
-    var qstn = angular.module('questionsMainCtrl', ['engagement','engQuestions']);
+    var qstn = angular.module('questionsMainCtrl', ['engagement','EngagementQuestionsService','EngagementTabService']);
     qstn.controller("QuestionsMainCtrl", QuestionsMainCtrl);
     
-    function QuestionsMainCtrl($scope,Engagement,EngQuestions) {
+    function QuestionsMainCtrl(Engagement,EngagementQuestionsService,EngagementTabService) {
         self = this;
         self.Engagement = Engagement;
       //  self.questions = $scope.qc.questions;
-     self.questions = EngQuestions.questions;
+     self.questions = EngagementQuestionsService.questions;
         var selectEngagementQuestion =function(){
         	if(Engagement.questions != undefined && Engagement.questions != null){        		
         		for(var i=0; i< Engagement.questions.length;i++) {
@@ -68,7 +68,8 @@
                 }
             }
             
-            $scope.$parent.etc.tabs[1].visible = goCapacity;
+           // $scope.$parent.etc.tabs[1].visible = goCapacity;
+            EngagementTabService.tabs[1].visible = goCapacity;
             
         };
        /* self.processChangeButton = function () {

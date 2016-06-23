@@ -4,12 +4,13 @@
  * @FileName	:	AdreCtrl.js
  */
 
-var app = angular.module("AdreCtrlModule",[]);
+var app = angular.module("AdreCtrlModule",['HomeTabService']);
 
-var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout) {
+var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout,HomeTabService) {
 	self = this;
 	
 	self.user={name:"Steven Lopez",id:1234};
+	self.HomeTabService=HomeTabService;
 	
 	/* State Provider Events*/ 	
 	

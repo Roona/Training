@@ -1,21 +1,21 @@
 (function(angular, _) {
     "use strict"
-    angular.module('capQuestions', [])
+    angular.module('CapacityQuestionsService', [])
 
-        .service('CapQuestions', function CapacityQuestions() {
-            var CapacityQuestions = this;     
-            CapacityQuestions.capQuestions = [];
+        .service('CapacityQuestionsService', function CapacityQuestionsService() {
+            var self = this;     
+            self.capQuestions = [];
             
             
             this.initialize = function(capQuestions){
                 if(capQuestions){
                     this.clear();
-                    CapacityQuestions.capQuestions = capQuestions;
+                    self.capQuestions = capQuestions;
                    
                 }
             };
             this.clear = function(){
-            	CapacityQuestions.capQuestions = [];
+            	self.capQuestions = [];
             };
             
         });

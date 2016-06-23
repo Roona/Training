@@ -1,21 +1,21 @@
 (function(angular, _) {
     "use strict"
-    angular.module('engQuestions', [])
+    angular.module('EngagementQuestionsService', [])
 
-        .service('EngQuestions', function EngagementQuestions() {
-            var EngagementQuestions = this;     
-            EngagementQuestions.questions = [];
+        .service('EngagementQuestionsService', function EngagementQuestionsService() {
+         var self = this;     
+            self.questions = [];
             
             
             this.initialize = function(questions){
                 if(questions){
                     this.clear();
-                    EngagementQuestions.questions = questions;
+                    self.questions = questions;
                    
                 }
             };
             this.clear = function(){
-            	EngagementQuestions.questions = [];
+            	self.questions = [];
             };
             
         });

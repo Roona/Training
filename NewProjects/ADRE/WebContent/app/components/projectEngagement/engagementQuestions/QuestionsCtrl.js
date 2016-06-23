@@ -1,13 +1,13 @@
 (function (angular, _) {
     "use strict"
-    var qstn = angular.module('questionsCtrl', ['engagement','engQuestions']);
+    var qstn = angular.module('questionsCtrl', ['engagement','EngagementQuestionsService']);
     qstn.controller("QuestionsCtrl", QuestionsCtrl);
 
-    function QuestionsCtrl(Engagement,resolveObj,EngQuestions ) {
+    function QuestionsCtrl(Engagement,resolveObj,EngagementQuestionsService ) {
         self = this;
         self.Engagement = Engagement;
-       // self.questions = modelObj.questions;
-        EngQuestions.initialize(resolveObj.questions);
+       // self.questions = resolveObj.questions;
+        EngagementQuestionsService.initialize(resolveObj.questions);
         // self.questions;
        
         // self.processQuestions = function() {

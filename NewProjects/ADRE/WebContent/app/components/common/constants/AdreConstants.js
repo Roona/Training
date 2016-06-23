@@ -18,10 +18,13 @@ var AdreConstants = function(){
 	this.WHY_WE_CHOOOSE = "Why We Choose Us";
 	
 	// Tabs
-	this.TAB_HOME = "Home";
+	this.TAB_HOME = "ADRE";
 	this.TAB_ENGAGEMENT = "Engagement";
 	this.TAB_CAPACITY = "Capacity";
 	this.TAB_LOGIN = "Login";
+	this.TAB_ADMIN="Admin";
+	this.TAB_MANAGER_MATRIX="Manager Matrix";
+	this.TAB_HELP="Help";
 	
 	this.TAB_ENGAGEMENT_QUES="Engagement Question";
 	this.TAB_CAPACITY_QUES="Capacity Question";

@@ -62,8 +62,10 @@
 <script src="app/components/common/services/WebserviceFactory.js"></script>
 <script src="app/components/common/services/Eai.js"></script>
 <script src="app/components/common/services/Engagement.js"></script>
-<script src="app/components/common/services/EngagementQuestions.js"></script>
-<script src="app/components/common/services/CapacityQuestions.js"></script>
+<script src="app/components/common/services/EngagementQuestionsService.js"></script>
+<script src="app/components/common/services/CapacityQuestionsService.js"></script>
+<script src="app/components/common/services/EngagementTabService.js"></script>
+<script src="app/components/common/services/HomeTabService.js"></script>
 <script src="app/components/projectEngagement/engagementTab/EngagementTabCtrl.js"></script>
 
 <script>
@@ -77,9 +79,6 @@
                  $(this).children('.sub-menu').slideUp(200); 
             }
         );
-        
-       // alert("home");
-       // $("#adrehome").trigger('click');
        
     }); // end ready
 </script>
@@ -100,6 +99,66 @@
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid navbar-custom " style="z-index:200;" >                
 			 <div class="navbar-header " style="cursor: pointer; cursor: hand !important;" ui-sref="/Home" href="/Home">
+					<!-- left corner tab fixed (header)-->
+					<li  ng-class="{ active: isActive('{{ac.HomeTabService.headerTab.url}}')}">
+					
+					<a id="{{ac.HomeTabService.headerTab.id}}" class="navbar-brand " ui-sref="{{ac.HomeTabService.headerTab.url}}" href="/Home">{{ac.HomeTabService.headerTab.title}}</a>
+					</li>
+				</div> 	
+				
+				
+				<div id="navbarCollapse"  >
+					<ul class="nav navbar-nav" ng-repeat="tab in ac.HomeTabService.tabs">   
+					
+					
+						<li ng-show="!tab.hasSubMenu" ng-class="{ active: isActive('{{tab.newUrl}}')}"><a ui-sref="{{tab.newUrl}}">{{tab.title}}</a></li>
+						
+						<li ng-show="tab.hasSubMenu" class="dropdown" ng-class="{ active: isActive('{{tab.newUrl}}')}">
+						<a  href="#">{{tab.title}}</a>
+						
+						 <ul class="sub-menu" ng-repeat="subMenu in tab.subMenu" >
+				                <li  ng-class="{ active: isActive('{{subMenu.newUrl}}')}"><a ui-sref="{{subMenu.url}}">{{subMenu.title}}</a></li>
+ 				              
+           					 </ul>
+						</li>
+						
+						
+						
+						<!-- 
+						<li ng-class="{ active: isActive('/ProjectLaunch')}"><a ui-sref="/ProjectLaunch">Engagement</a></li>
+                       
+                       
+                        <li ng-class="{ active: isActive('/Capacity')}"><a ui-sref="/Capacity">Capacity Plan</a></li>
+                              
+                         <li class="dropdown"  ng-class="{ active: isActive('/Admin')}" >
+                         
+                             <a href="#" >Admin </a>
+                             
+                              <ul class="sub-menu">
+				                <li ng-class="{ active: isActive('/ManagerMatrix')}"><a  ui-sref="/ManagerMatrix">Manager Matrix</a></li>
+ 				              
+           					 </ul>
+                        </li> 
+						<li ng-class="{ active: isActive('/Help')}"><a ui-sref="/Help">Help</a></li> -->
+					</ul>
+					<!-- Right corner tab fixed -->
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-class="{ active: isActive('{{ac.HomeTabService.rightTab.url}}')}"><a id="{{ac.HomeTabService.rightTab.id}}" ui-sref="{{ac.HomeTabService.rightTab.url}}"><span class="glyphicon glyphicon-log-in"></span>{{ac.HomeTabService.rightTab.title}}</a></li>
+					</ul>
+				</div>                
+			</div>
+			
+			<div class="row white">
+				<div class="col-sm-12">
+						Welcome: {{ac.user.name}}  - {{ac.user.id}}
+				</div>
+			</div>
+			
+		</nav>
+		
+<!-- 		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid navbar-custom " style="z-index:200;" >                
+			 <div class="navbar-header " style="cursor: pointer; cursor: hand !important;" ui-sref="/Home" href="/Home">
 					<li  ng-class="{ active: isActive('/Home')}">
 					<a id="adrehome" class="navbar-brand " ui-sref="/Home" href="/Home">ADRE</a>
 					</li>
@@ -117,7 +176,7 @@
                              
                               <ul class="sub-menu">
 				                <li ng-class="{ active: isActive('/ManagerMatrix')}"><a  ui-sref="/ManagerMatrix">Manager Matrix</a></li>
- 				               <!--  <li><a href="#">Nav 3.2</a></li>
+ 				                <li><a href="#">Nav 3.2</a></li>
 				                <li><a href="#">Nav 3.3</a></li>
 					              <li class="dropdown">
 					                    <a href="#">Nav 3.4</a>
@@ -135,7 +194,7 @@
 					                        <li><a href="#">Nav 3.4.5</a></li>
 					                    </ul>
 					                </li>
-				                <li><a href="#">Nav 3.5</a></li>  --> 
+				                <li><a href="#">Nav 3.5</a></li>  
            					 </ul>
                         </li> 
 						<li ng-class="{ active: isActive('/Help')}"><a ui-sref="/Help">Help</a></li>
@@ -153,7 +212,7 @@
 			</div>
 			
 		</nav>
-		
+		 -->
 	   
 		<div ui-view>
 		</div>
