@@ -1,0 +1,8 @@
+{"environment": 
+    [
+        {"baseUrl": "http://localhost:8090"}
+        // {"baseUrl": "/"}
+        // {"baseUrl": "http://c0002590.test.cloud.fedex.com:7878/"}
+        // {"baseUrl": "http://c0002591.test.cloud.fedex.com:7878/"}        
+    ]
+}
