@@ -1,12 +1,12 @@
 (function (angular, _) {
     "use strict"
-    var eng = angular.module('engagementCtrl', ['eaiData', 'escSecurity', 'engagement']);
+    var eng = angular.module('engagementCtrl', ['eaiData', 'escSecurity', 'engagement','IAListService']);
     eng.controller("EngagementCtrl", EngagementCtrl);
 
-    function EngagementCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter) {
+    function EngagementCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter,IAListService,resolveObj) {
         self = this;
         self.Engagement = Engagement;
-       
+        IAListService.initialize(resolveObj.iaNames);
         self.saveEngagement = function () {
             var params = {
                 configName: Engagement.configName,

@@ -59,9 +59,7 @@
             });
         };
         
-        // self.clear = function() {
-        //     Engagement.clear();
-        // };
+      
     }
 
 })(window.angular);

@@ -45,17 +45,6 @@
             Engagement.targetDate = self.targetDate;
         };
         
-        self.getEaiInfo = function() {
-            for(var e in Engagement.eai){
-                EaiFactory.getEai(Engagement.eai[e])
-                .then(function (result) {
-                    self.eaiRec.push(result);    
-                },
-                function(error) {
-                    console.log(error.statusText);
-                });
-            }
-        }
         
         self.eaiChecked = function(index) {
             var idx = self.selectedEai.indexOf(index);
@@ -98,20 +87,7 @@
                 });
         }
         
-       /* self.getIaList = function() {
-           // $http.get('http://localhost:8090/GateWayService/rest/CommonServiceInterface/getMemberListForRole/adre_architect_role')
-             $http.get('app/components/common/resources/iaList.json')
-                .then(function successCallback(response) {
-                    if (response.data.members) {
-                        self.iaNames = response.data.members;
-                    } else {
-                        self.isIaError = response.data.failReason;
-                    }
-                },
-                function errorCallback(response) {
-                    console.log("ADRE Error getting architect user information" + response);
-                });
-        }*/
+      
 
         self.addCustomEai = function () {
             EaiFactory.getEai(self.eai)
@@ -152,6 +128,83 @@
             }
         }
         
+
+
+        
+        self.saveEngagement = function () {
+        	
+        	if(Engagement.configStatus == 'Completed'){
+        		
+        		 alert('Save completed engagement');
+        	}else{
+        		alert('Save draft/new engagement');
+        	}
+        	
+            var params = {
+                configName: Engagement.configName,
+                configOwnerEmpNo: '897579',
+                itgField: Engagement.itgField,
+                mgrField: Engagement.mgrField,
+                targetDate: Engagement.targetDate,
+                configDisplayName: Engagement.configName,
+                configOwner: 'Apurv Mahajan',
+                eai: Engagement.eai,
+                adre_proj_desc: Engagement.projectDescription,
+                passIDField: Engagement.passIDField
+            };
+            alert('params - ' + jsonFilter(params));
+            alert(Engagement.assignedIa);
+            $http.post('http://localhost:8090/GateWayService/rest/CommonServiceInterface/save', jsonFilter(params))
+                .then(function successCallback(response) {
+                    alert('Saved Successfully');
+                },
+                function errorCallback(response) {
+                    alert('Error Reported');
+                    console.log("ADRE Error saving data" + response);
+                });
+        }
+
+        self.createEngagement = function () {
+        	
+        	if(Engagement.configStatus == 'Completed'){
+        		
+       		 alert('create completed engagement' + "Comming Soon!");
+       	}else{
+       		alert('create draft/new engagement' + "Comming Soon!");
+       	}
+        }
+
+        self.cancelEngagement = function () {
+        	
+        if(Engagement.configStatus == 'Completed'){
+        		
+       		 alert('Delete completed engagement' + "Comming Soon!");
+       	}else{
+       		alert('Delete draft/new engagement' + "Comming Soon!");
+       	}
+        }
+
+        self.moveAll = function(from, to, src) {
+            angular.forEach(from, function(item) {
+                var obj = angular.fromJson(item);
+                var idx=from.indexOf(item);                
+                if (idx != -1) {
+                    to.push(angular.fromJson(item));                    
+                }
+                
+                var len = src.length;
+                for(var i = 0; i<len; i++){
+                    if(src[i].fedexId == obj.fedexId){
+                       src.splice(i, 1);
+                       break; 
+                    }
+                }
+            });
+            from = [];
+        };
+        
+        
+        /*        
         self.saveEngagement = function () {
             var params = {
                 configName: Engagement.configName,
@@ -183,26 +236,10 @@
 
         self.cancelEngagement = function () {
             alert("Comming Soon!");
-        }
-
-        self.moveAll = function(from, to, src) {
-            angular.forEach(from, function(item) {
-                var obj = angular.fromJson(item);
-                var idx=from.indexOf(item);                
-                if (idx != -1) {
-                    to.push(angular.fromJson(item));                    
-                }
-                
-                var len = src.length;
-                for(var i = 0; i<len; i++){
-                    if(src[i].fedexId == obj.fedexId){
-                       src.splice(i, 1);
-                       break; 
-                    }
-                }
-            });
-            from = [];
-        };
+        }*/
+        
+        
+        
     }
 
 })(window.angular);

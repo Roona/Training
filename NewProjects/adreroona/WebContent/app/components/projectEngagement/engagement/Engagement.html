@@ -1,17 +1,5 @@
 <div id="engagementForm" class="container animate-hide">
 
     <engagement-Form></engagement-Form>
-    
-     <div class="row" ng-show="etc.Engagement.configStatus == 'Completed'" >
-        <button class="btn stdBtn" ng-click="rc.saveEngagement()">Save</button>&nbsp;
-        <button class="btn btn-danger" ng-click="rc.cancelEngagement()">Delete</button>
-    </div>
-    
-    <div class="row" ng-show="etc.Engagement.configStatus != 'Completed'">
-       <!--  <button class="btn stdBtn" ui-sref="/QuestionsScreen" ng-show="!ec.Engagement.capacityEngagement"> << Back</button>&nbsp;
-        <button class="btn stdBtn" ui-sref="/CapacityScreen" ng-show="ec.Engagement.capacityEngagement"> << Back</button>&nbsp; -->
-        <button class="btn stdBtn" ng-click="ec.saveEngagement()">Save</button>&nbsp;
-        <button class="btn stdBtn" ng-click="ec.createEngagement()">Finalize</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger" ng-click="ec.cancelEngagement()">Delete</button>
-    </div>    
+        
 </div>

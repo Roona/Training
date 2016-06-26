@@ -528,3 +528,10 @@ nav li li.dropdown > a {
     background-position:right 16px;
     background-repeat:no-repeat;
 }
+
+
+.btn-purplecustom {
+    background: #4D148C;
+    color: #ffffff;
+    
+}

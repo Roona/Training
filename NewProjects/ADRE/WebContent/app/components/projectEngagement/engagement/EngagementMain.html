@@ -61,7 +61,7 @@
                     </button>
                 </div>
                 <div class="col-sm-6" style="width: 40%; margin: 0 auto; text-align: left;">
-                    <select multiple ng-multiple="true" ng-model="emc.Engagement.assignedIa" ng-init="emc.getIaList()" class="iaList">
+                    <select multiple ng-multiple="true" ng-model="emc.Engagement.assignedIa"  class="iaList">
                         <option ng-selected="{{i == emc.Engagement.assignedIa}}" ng-repeat="i in emc.iaNames" value="{{i}}" class="iaListOptions" >
                             {{i.name}}</option>
                     </select>

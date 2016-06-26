@@ -174,3 +174,14 @@
         </div>
     </div>
 </div>
+
+<div class="row" ng-show="emc.Engagement.configStatus == 'Completed'" >
+        <button class="btn stdBtn" ng-click="emc.saveEngagement()">Save</button>&nbsp;
+        <button class="btn btn-danger" ng-click="emc.cancelEngagement()">Delete</button>
+    </div>
+    
+    <div class="row" ng-show="emc.Engagement.configStatus != 'Completed'">
+        <button class="btn stdBtn" ng-click="emc.saveEngagement()">Save</button>&nbsp;
+        <button class="btn stdBtn" ng-click="emc.createEngagement()">Finalize</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" ng-click="emc.cancelEngagement()">Delete</button>
+    </div> 

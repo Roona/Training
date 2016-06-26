@@ -8,6 +8,7 @@
 var pageResolverState = function ($http,$q, $state, $timeout,pageName) {
     var deferred = $q.defer();
     
+    // starts progress bar
     displayProgress();
     //var pageName = '';
     
@@ -91,3 +92,16 @@ var getResolveObject = function ($http,pageName,successCb, failCb) {
  };
  
  
+ 
+var getEaiInfo = function(Engagement) {
+	
+     for(var e in Engagement.eai){
+         EaiFactory.getEai(Engagement.eai[e])
+         .then(function (result) {
+             self.eaiRec.push(result);    
+         },
+         function(error) {
+             console.log(error.statusText);
+         });
+     }
+ }

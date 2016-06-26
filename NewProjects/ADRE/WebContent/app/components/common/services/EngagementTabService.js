@@ -30,15 +30,5 @@
                          }
                      ];
             
-          /*  
-            // Function to set active engagement tab 
-            EngagementTabService.checkActive = function (newU) {
-                if (newUrl ==   $scope.newLocation) {
-                    return "btn-primary";
-                } else {
-                    return "";
-                }
-            };*/
-            
         });
 })(window.angular);

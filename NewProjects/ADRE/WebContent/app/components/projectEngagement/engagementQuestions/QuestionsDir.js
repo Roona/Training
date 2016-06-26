@@ -7,13 +7,7 @@
                 templateUrl: "app/components/projectEngagement/engagementQuestions/QuestionsMain.html",
                 controller: 'QuestionsMainCtrl',
                 controllerAs: 'qmc'
-                // resolve: {
-                //     activate: function ($q) {
-                //         var defer = $q.defer();
-                //         defer.resolve();
-                //         return defer.promise;
-                //     }
-                // }
+                
             };
         });
 })(window.angular);

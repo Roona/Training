@@ -8,6 +8,7 @@
 var pageResolverState = function ($http,$q, $state, $timeout,pageName) {
     var deferred = $q.defer();
     
+    // starts progress bar
     displayProgress();
     //var pageName = '';
     
@@ -44,7 +45,20 @@ var getResolveObject = function ($http,pageName,successCb, failCb) {
     	 resolveObj={result:"failure"}; 
      }
      
-    if(pageName == 'CapacityQuestionsScreen'){
+     if(pageName == 'EngagementTabScreen'){
+    	 var promise = $http.get('app/components/common/resources/iaList.json');
+         promise.then(function (response) {
+        	 resolveObj.iaNames = response.data.members;
+        	 successCb(resolveObj);
+         },
+         function(reason) {
+            // alert('Failed');
+             successCb(resolveObj);
+         }); 
+    	 
+     }
+     
+     else if(pageName == 'CapacityQuestionsScreen'){
     	 
     	 var promise = $http.get('app/components/common/resources/capQuestions.json');
          promise.then(function (response) {

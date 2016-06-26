@@ -1,6 +1,6 @@
 (function (angular, _) {
     "use strict"
-    var eng = angular.module('engagementMainCtrl', ['eaiData', 'escSecurity', 'engagement']);
+    var eng = angular.module('engagementMainCtrl', ['eaiData', 'escSecurity', 'engagement', 'IAListService']);
     eng.controller("EngagementMainCtrl", EngagementMainCtrl);
     // directive prevents page jumping to top when href is clicked
     eng.directive('a', function() {
@@ -16,7 +16,7 @@
         };
     });
 
-    function EngagementMainCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter) {
+    function EngagementMainCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter,IAListService) {
         self = this;
         self.Engagement = Engagement;
         self.eai;
@@ -38,6 +38,8 @@
         self.sortEaiType = 'eaiNumber';
         self.sortEaiReverse = false;
         self.searchEai = '';
+        
+        self.iaNames = IAListService.iaNames;
 
         self.updateTargetDate = function () {
             Engagement.targetDate = self.targetDate;
@@ -96,20 +98,7 @@
                 });
         }
         
-        self.getIaList = function() {
-            $http.get('http://localhost:8090/GateWayService/rest/CommonServiceInterface/getMemberListForRole/adre_architect_role')
-            // $http.get('app/components/common/resources/iaList.json')
-                .then(function successCallback(response) {
-                    if (response.data.members) {
-                        self.iaNames = response.data.members;
-                    } else {
-                        self.isIaError = response.data.failReason;
-                    }
-                },
-                function errorCallback(response) {
-                    console.log("ADRE Error getting architect user information" + response);
-                });
-        }
+      
 
         self.addCustomEai = function () {
             EaiFactory.getEai(self.eai)

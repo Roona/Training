@@ -30,6 +30,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout,HomeTabS
             	
             }, 200);
         }
+        // stops progress bar
         removeProgress();
     });
     
@@ -44,7 +45,7 @@ var  AdreCtrl =  function($scope, $rootScope, $location,$state,$timeout,HomeTabS
     // Function to set active engagement tab 
     $scope.checkActive = function (newUrl) {
         if (newUrl ==   $scope.newLocation) {
-            return "btn-primary";
+            return "btn-purplecustom";
         } else {
             return "";
         }

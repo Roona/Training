@@ -166,3 +166,16 @@ jQuery.fn.ForceNumericOnly =
 		 });
 	
 	
+	/* Jquery Script for Dropdown menu */ 
+	
+	 $(document).ready(function() {
+	        $( '.dropdown' ).hover(
+	            function(){
+	                $(this).children('.sub-menu').slideDown(10);
+	            },
+	            function(){
+	                 $(this).children('.sub-menu').slideUp(200); 
+	            }
+	        );
+	       
+	    }); // end ready
