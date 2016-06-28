@@ -16,7 +16,7 @@
         };
     });
 
-    function EngagementMainCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter,IAListService) {
+    function EngagementMainCtrl(Engagement, EaiFactory, $http, $filter, jsonFilter,IAListService, EngagementTabService) {
         self = this;
         self.Engagement = Engagement;
         self.eai;
@@ -38,6 +38,8 @@
         self.sortEaiType = 'eaiNumber';
         self.sortEaiReverse = false;
         self.searchEai = '';
+        
+        self.EngagementTabService = EngagementTabService;
         
         self.iaNames = IAListService.iaNames;
 

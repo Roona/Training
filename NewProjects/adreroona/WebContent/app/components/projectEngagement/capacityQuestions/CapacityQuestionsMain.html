@@ -10,7 +10,8 @@
                 <div ng-if="etc.Engagement.configStatus == 'Completed'">
 						
 							
-							 <input type="checkbox"  disabled="disabled" ng-model="q.value" ng-click="cmc.processQuestions()">
+							<!--  <input type="checkbox"  disabled="disabled" ng-model="q.value" ng-click="cmc.processQuestions()"> -->
+							 <input type="checkbox"   ng-model="q.value" ng-click="cmc.processQuestions()">
 					</div>
 					<div ng-if="etc.Engagement.configStatus != 'Completed'">
 						 <input type="checkbox"  ng-model="q.value" ng-click="cmc.processQuestions()">

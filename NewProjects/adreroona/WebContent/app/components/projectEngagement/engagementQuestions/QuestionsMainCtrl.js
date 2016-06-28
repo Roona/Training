@@ -70,7 +70,7 @@
             
           
             EngagementTabService.tabs[1].visible = goCapacity;
-            
+           // Engagement.capacityEngagement = goCapacity;
         };
        
         

@@ -1,0 +1,187 @@
+<div class="row">
+    <div class="panel panel-default" style="max-width: 780px;">
+        <div class="panel-heading"><h3 class="purple">Engagement</h3></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label>Project Name</label><br/>
+                    <input type=text id="TestResource" ng-model="emc.Engagement.configName" placeholder="Project Name" resource="configName" authorize></textarea>
+                </div>
+                <div class="col-sm-12">
+                    <label>Description</label><br/>
+                    <textarea ng-model="emc.Engagement.projectDescription" rows="4" cols="80" placeholder="Project Description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>ITG</label><br/>
+                    <input type="text" name="ITG" placeholder="ITG Number" ng-model="emc.Engagement.itgField"
+                        ng-blur="emc.getITG()" min="0" max="9999999" required />
+                    <span ng-message="emc.engagementForm.ITG.$error" style="color:red" class="error help-block">{{emc.itgError}}</span>
+                </div>
+                <div class="col-sm-6">
+                    <label>Target Date</label><br/>
+                    <input type="date" name="date" ng-model="emc.targetDate" required ng-change="emc.updateTargetDate()" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>Manager</label><br/>
+                    <input type="text" name="projManager" placeholder="Manager Emp ID" ng-model="emc.Engagement.mgrField" ng-blur="emc.isManager()" />
+                    <span ng-message="error" style="color:red" class="error help-block">{{emc.isManagerError}}</span>
+                </div>
+                <div class="col-sm-6">
+                    <label ng-show="!Engagement.capacityEngagement">first PassID</label><br/>
+                    <input type="text" ngModel="emc.Engagement.passIDField" placeholder="first Pass ID" ng-show="!emc.Engagement.capacityEngagement" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label>IA(s) Assigned</label>
+                </div>
+                <div class="col-sm-6">
+                    <label>IA List</label>
+                </div>
+            </div>
+            <div class="row" >    
+                <div class="col-sm-5">
+                    <select multiple ng-multiple="true" ng-model="emc.removeIas"  class="iaList">
+                        <option ng-selected="{{i == emc.removeIas}}"  ng-repeat="i in emc.addedIaNames" value="{{i}}" class="iaListOptions">
+                            {{i.name}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-1">
+                    </br>
+                    <button id="addEais" value=">>" ng-click="emc.moveAll(emc.Engagement.assignedIa, emc.addedIaNames, emc.iaNames)" class="btn btn-default btn-circle purple">
+                        <i class="glyphicon glyphicon-backward"></i>
+                    </button>
+                    </br></br>
+                    <button id="removeEais" value="< &nbsp" ng-click="emc.moveAll(emc.removeIas, emc.iaNames, emc.addedIaNames)" class="btn btn-default btn-circle purple">
+                        <i class="glyphicon glyphicon-forward"></i>
+                    </button>
+                </div>
+                <div class="col-sm-6" style="width: 40%; margin: 0 auto; text-align: left;">
+                    <select multiple ng-multiple="true" ng-model="emc.Engagement.assignedIa"  class="iaList">
+                        <option ng-selected="{{i == emc.Engagement.assignedIa}}" ng-repeat="i in emc.iaNames" value="{{i}}" class="iaListOptions" >
+                            {{i.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 gridStyle" ng-grid="gridOptions">
+                    <label>EAI</label><br/>
+                </div>
+                <div class="col-sm-6" ng-style="{visibility: emc.Engagement.capacityEngagement && 'visible' || 'hidden'}">
+                    <label>Hostname</label><br/>
+                </div>
+                <div class="col-sm-5 gridStyle" ng-grid="gridOptions">
+                    <input name="eai" ng-model="emc.eai" placeholder="EAI Number/Name" size="37" ng-minlength="3" ng-maxlength="10"/>
+                    <span ng-message="error" style="color:red" class="error help-block">{{emc.isEaiError}}</span>
+                </div>
+                <div class="col-sm-1 gridStyle" ng-grid="gridOptions" >
+                    <button type="button" class="btn btn-default btn-circle green" ng-click="emc.addCustomEai()">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button><br/>
+                </div>
+                <div class="col-sm-5 gridStyle" ng-grid="gridOptions">
+                    <input type="text" ng-model="emc.hostname" placeholder="Enter hostname" size="37" 
+                        ng-style="{visibility:emc.Engagement.capacityEngagement  && 'visible' || 'hidden'}" /> &nbsp;
+                </div>
+                <div class="col-sm-1 gridStyle" ng-grid="gridOptions" >
+                    <button type="button" class="btn btn-default btn-circle green" ng-click="emc.addHostname()" 
+                        ng-style="{visibility:emc.Engagement.capacityEngagement && 'visible' || 'hidden'}">
+                        <i class="glyphicon glyphicon-plus" ng-style="{visibility: emc.Engagement.capacityEngagement && 'visible' || 'hidden'}"></i>
+                    </button><br/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 gridStyle" ng-grid="gridOptions" >
+                    <table cellpadding="0" border="0" cellspacing="0" ng-init="emc.getEaiInfo()" class="table-6x color2">
+                        <thead>
+                            <tr id="heading">
+                                <th>
+                                    <a ng-href="#" ng-click="emc.sortEaiType = 'emc.eaiNumber'; emc.sortEaiReverse = !emc.sortEaiReverse">
+                                    EAI # 
+                                    <span ng-show="emc.sortEaiType == 'emc.eaiNumber' && !emc.sortEaiReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="emc.sortEaiType == 'emc.eaiNumber' && emc.sortEaiReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#" ng-click="emc.sortEaiType = 'emc.eaiName'; emc.sortEaiReverse = !emc.sortEaiReverse">
+                                    EAI NAME
+                                    <span ng-show="emc.sortEaiType == 'emc.eaiName' && !emc.sortEaiReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="emc.sortEaiType == 'emc.eaiName' && emc.sortEaiReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#" ng-click="emc.sortEaiType = 'emc.profileId'; emc.sortEaiReverse = !emc.sortEaiReverse">
+                                    Symphony #
+                                    <span ng-show="emc.sortEaiType == 'emc.profileId' && !emc.sortEaiReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="emc.sortEaiType == 'emc.profileId' && emc.sortEaiReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#" ng-click="emc.sortEaiType = 'emc.profileName'; emc.sortEaiReverse = !emc.sortEaiReverse" class="a:link{color:white}">
+                                    Symphony Name
+                                    <span ng-show="emc.sortEaiType == 'emc.profileName' && !emc.sortEaiReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="emc.sortEaiType == 'emc.profileName' && emc.sortEaiReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tr class="color" ng-repeat="eai in emc.eaiRec | orderBy:emc.sortEaiType:emc.sortEaiReverse | filter:emc.searchEai">
+                            <td> 
+                                <input type="checkbox" ng-click="emc.eaiChecked($index);" />
+                                {{eai.eaiNumber}} 
+                            </td>
+                            <td>{{eai.eaiName}}</td>
+                            <td>{{eai.profileId}}</td>
+                            <td>{{eai.profileName}}</td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search EAI/Symphony Data" ng-model="emc.searchEai">
+                        </div>      
+                    </div>
+                </div>
+                <div class="col-sm-1 gridStyle" ng-grid="gridOptions" >
+                    <button type="button" class="btn btn-default btn-circle pull-top red" style="vertical-align: top" 
+                        ng-click="emc.removeEai()">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </button>
+                </div>
+                <div class="col-sm-5 gridStyle" ng-grid="gridOptions">
+                    <select multiple ng-multiple='true' id="emc.eaiSelected" ng-model="emc.selectedHost" 
+                        ng-options="h for h in emc.Engagement.hostnames" class="iaList"
+                        ng-style="{visibility: emc.Engagement.capacityEngagement && 'visible' || 'hidden'}">                                                            
+                    </select>
+                </div>
+                <div class="col-sm-1 gridStyle" ng-grid="gridOptions" >
+                    <button type="button" class="btn btn-default btn-circle pull-top red" style="vertical-align: top" 
+                        ng-style="{visibility: emc.Engagement.capacityEngagement && 'visible' || 'hidden'}" ng-click="emc.removeHost()">
+                        <i class="glyphicon glyphicon-trash" ng-style="{visibility: emc.Engagement.capacityEngagement && 'visible' || 'hidden'}"></i>
+                    </button>
+                </div>
+
+                <div class="col-sm-6">
+                    <span style="color:red" class="error help-block" ng-show="emc.engagementForm.eai.$error.minlength && validate">Need at least 3 numbers</span>
+                    <span style="color:red" class="error help-block" ng-show="emc.engagementForm.eai.$error.maxlength && validate">max length exceeded numbers</span>
+                    <span style="color:red" class="error help-block" ng-show="emc.engagementForm.eai.$error && validate">max length exceeded numbers</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="emc.Engagement.configStatus == 'Completed'" >
+        <button class="btn stdBtn" ng-click="emc.saveEngagement()">Save</button>&nbsp;
+        <button class="btn btn-danger" ng-click="emc.cancelEngagement()">Delete</button>
+    </div>
+    
+    <div class="row" ng-show="emc.Engagement.configStatus != 'Completed'">
+        <button class="btn stdBtn" ng-click="emc.saveEngagement()">Save</button>&nbsp;
+        <button class="btn stdBtn" ng-click="emc.createEngagement()">Finalize</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-danger" ng-click="emc.cancelEngagement()">Delete</button>
+    </div> 

@@ -1,0 +1,17 @@
+
+<div clss=row> 
+<h5 class="purple">Project Name : {{etc.Engagement.configName}}</h5>
+</div>
+<div class="container animate-hide" style="margin: 10px;">
+	<div id="navbarCollapse" class="collapse navbar-collapse">
+		<ul class="nav navbar-nav" ng-cloak>
+			<li ng-repeat="tab in etc.EngagementTabService.tabs"  ng-cloak>
+			<button id="{{tab.id}}" ng-class="checkActive(tab.newUrl)"  ui-sref="{{tab.url}}" ng-show="tab.visible" ng-cloak>{{tab.title}}</a>
+			</li>
+		</ul>
+	</div>
+
+		
+	<div ui-view></div>
+
+</div>

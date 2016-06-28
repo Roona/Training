@@ -1,0 +1,104 @@
+
+
+
+<div class="row">
+    <div class="panel panel-default" style="max-width: 780px;">
+        <div class="panel-heading"><h3 class="purple">Project Launch</h3></div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12" border-style: dashed;>
+                    <label class="text-left">Project Filter(s)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="checkbox" ng-click="plmc.changeFilter($event, e.id,'Draft')"  />&nbsp; View All Open Engagements<br/>
+                    <input type="checkbox"/>&nbsp; Projects Needing an IA<br/>
+                </div>
+                <div class="col-sm-6">
+                    <input type="checkbox"  ng-click="plmc.changeFilter($event, e.id,'completed')"  />&nbsp; Completed Engagements<br/>
+                    <input type="checkbox"/>&nbsp; Cancelled Engagements<br/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="text-left">Project(s)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table  cellpadding="0" border="0" cellspacing="0" ng-init="plmc.getProject()" class="table-12x color2">
+                        <thead>
+                            <tr id="heading" >
+                            
+                            <th ng-repeat= "col in plmc.colHeader">
+	                            <a ng-href="#"   ng-click="plmc.changeSort(col.field)">
+								{{col.displayname}} 
+								<span ng-show="plmc.sortPrjType == col.field && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+	                            <span ng-show="plmc.sortPrjType == col.field && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+	                            </a> 
+                            </th>
+                             
+                               <!--  <th>
+                                    <a ng-href="#" ng-click="plmc.sortPrjType = 'configName'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
+                                    Config Name
+                                    <span ng-show="plmc.sortPrjType == 'configName' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="plmc.sortPrjType == 'configName' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a ng-href="#" ng-click="plmc.sortPrjType = 'dataDetails.targetDate'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
+                                    Target Date
+                                    <span ng-show="plmc.sortPrjType == 'dataDetails.targetDate' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="plmc.sortPrjType == 'dataDetails.targetDate' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a ng-href="#" ng-click="plmc.sortPrjType = 'dataDetails.itgField'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
+                                    ITG
+                                    <span ng-show="plmc.sortPrjType == 'dataDetails.itgField' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="plmc.sortPrjType == 'dataDetails.itgField' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a ng-href="#" ng-click="plmc.sortPrjType = 'supportAssignorName'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
+                                    Manager
+                                    <span ng-show="plmc.sortPrjType == 'supportAssignorName' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="plmc.sortPrjType == 'supportAssignorName' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a ng-href="#" ng-click="plmc.sortPrjType = 'configStatus'; plmc.sortPrjReverse = !plmc.sortPrjReverse">
+                                    Status
+                                    <span ng-show="plmc.sortPrjType == 'configStatus' && !plmc.sortPrjReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="plmc.sortPrjType == 'configStatus' && plmc.sortPrjReverse" class="fa fa-caret-up"></span>
+                                    </a>
+                                </th>
+                                
+                                 -->
+                            </tr>
+                        </thead>
+                        <tr class="color" ng-class="proj === plmc.selectedEngagement? 'selected':''" 
+                            ng-repeat="proj in plmc.myProjects | orderBy:plmc.sortPrjType:plmc.sortPrjReverse | filter:plmc.searchPrj" 
+                            ng-click="plmc.setSelectedEngagement(proj)">
+                            <td> 
+                                {{proj.configName}} 
+                            </td> 
+                            <td>{{proj.dataDetails.targetDate}}</td>
+                            <td>{{proj.dataDetails.itgField}}</td>
+                            <td>{{proj.supportAssignorName}}</td>
+                            <td>{{proj.configStatus}}</td>
+                            <td>{{proj.capacityPlanData.requestDescription}}</td>
+                        </tr>
+                    </table>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Search Project Data" ng-model="plmc.searchPrj">
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

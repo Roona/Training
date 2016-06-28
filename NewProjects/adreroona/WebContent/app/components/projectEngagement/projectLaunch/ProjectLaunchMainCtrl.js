@@ -55,7 +55,7 @@
                 self.myProjects = response.data.configDetailList;
             },
             function(reason) {
-                alert('Failed');
+                alert('Failed to get projects');
             });
         };
         

@@ -53,6 +53,7 @@ var getResolveObject = function ($http,pageName,successCb, failCb) {
          },
          function(reason) {
             // alert('Failed');
+        	 resolveObj={result:"failure"}; 
              successCb(resolveObj);
          }); 
     	 

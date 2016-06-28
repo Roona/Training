@@ -8,13 +8,16 @@
 				<div class="col-sm-1 ">
 
 					<div ng-if="etc.Engagement.configStatus == 'Completed'">
-						<input type="checkbox" disabled="disabled" ng-model="q.value"
+						<!-- <input type="checkbox" disabled="disabled" ng-model="q.value"
+							ng-click="qmc.processChangeButton()" > -->
+						<input type="checkbox" ng-model="q.value"
 							ng-click="qmc.processChangeButton()" >
 					</div>
 					<div ng-if="etc.Engagement.configStatus != 'Completed'">
 						<input type="checkbox" ng-disabled ="q.disabled" ng-model="q.value"
 							ng-click="qmc.processChangeButton()" >
 					</div>
+                    
                     
 				</div>
 				<div class="col-sm-11 ">{{q.question}}</div>

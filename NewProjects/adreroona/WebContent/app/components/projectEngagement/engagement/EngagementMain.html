@@ -30,8 +30,8 @@
                     <input type="text" name="projManager" placeholder="Manager Emp ID" ng-model="emc.Engagement.mgrField" ng-blur="emc.isManager()" />
                     <span ng-message="error" style="color:red" class="error help-block">{{emc.isManagerError}}</span>
                 </div>
-                <div class="col-sm-6">
-                    <label ng-show="!Engagement.capacityEngagement">first PassID</label><br/>
+                <div class="col-sm-6"   ng-show="!emc.Engagement.capacityEngagement">
+                    <label ng-show="!emc.Engagement.capacityEngagement">first PassID</label><br/>
                     <input type="text" ngModel="emc.Engagement.passIDField" placeholder="first Pass ID" ng-show="!emc.Engagement.capacityEngagement" />
                 </div>
             </div>

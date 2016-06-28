@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="panel panel-default" style="max-width: 780px;">
+        <div class="panel-heading">
+            <h3 class="purple">Capacity Questionaire</h3>
+        </div>
+        <div class="panel-body">
+                <div class="row " ng-repeat="q in cmc.capQuestions">
+                <div class="col-sm-1 ">
+                
+                <div ng-if="etc.Engagement.configStatus == 'Completed'">
+						
+							
+							 <input type="checkbox"  disabled="disabled" ng-model="q.value" ng-click="cmc.processQuestions()">
+					</div>
+					<div ng-if="etc.Engagement.configStatus != 'Completed'">
+						 <input type="checkbox"  ng-model="q.value" ng-click="cmc.processQuestions()">
+					</div>
+                   
+                </div>
+                <div class="col-sm-11 ">
+                    {{q.question}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
